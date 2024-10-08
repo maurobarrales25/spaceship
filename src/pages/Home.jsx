@@ -5,13 +5,13 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleStartGame = () => {
-        navigate("/reflex"); // Redirige a la página Reflex
+        navigate("/reflex"); 
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <h1>Welcome to Reflex Game</h1>
-            <p>Click the button below to start the game.</p>
+        <div style={{ textAlign: "center", marginTop: "10px" }}>
+            <h1>Welcome to Gaming Beyond Earth!</h1>
+            <p>Pick your Game Mode</p>
             <button
                 onClick={handleStartGame}
                 style={{
@@ -24,7 +24,7 @@ const Home = () => {
                     borderRadius: "5px",
                 }}
             >
-                Start Reflex Game
+                Play Reflex Mode
             </button>
         </div>
     );
