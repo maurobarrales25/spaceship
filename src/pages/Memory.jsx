@@ -15,7 +15,8 @@ const Memory = () => {
     const [userSequence, setUserSequence] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [message, setMessage] = useState('Press "Start Game!" to begin the game');
-    const [difficulty, setDifficulty] = useState(0.7); // Default to easy
+    const [difficulty, setDifficulty] = useState(700); // Default to easy
+    const [score, setScore] = useState(0); // Estado para el puntaje
 
     useEffect(() => {
         if (isPlaying && userSequence.length === sequence.length) {
@@ -28,6 +29,7 @@ const Memory = () => {
         const newSequence = generateSequence(1);
         setSequence(newSequence);
         setUserSequence([]);
+        setScore(0); // Reiniciar el puntaje al iniciar el juego
         setIsPlaying(false); // Desactivar clics durante la reproducción de la secuencia
         playSequence(newSequence);
     };
@@ -42,18 +44,19 @@ const Memory = () => {
     };
 
     const playSequence = (sequence) => {
+        setIsPlaying(false); // Desactivar clics durante la reproducción de la secuencia
         sequence.forEach((id, index) => {
             setTimeout(() => {
                 activateScreen(id);
                 setTimeout(() => {
                     deactivateScreen(id);
-                }, difficulty * 1000);
-            }, index * (difficulty * 1000 + 300));
+                }, difficulty);
+            }, index * (difficulty + 300));
         });
         setTimeout(() => {
             setMessage('Repeat the sequence');
             setIsPlaying(true); // Permitir clics en los LEDs
-        }, sequence.length * (difficulty * 1000 + 300));
+        }, sequence.length * (difficulty + 300));
     };
 
     const activateScreen = (id) => {
@@ -85,6 +88,7 @@ const Memory = () => {
     const checkSequence = () => {
         if (JSON.stringify(sequence) === JSON.stringify(userSequence)) {
             setMessage('Correct! Get ready for the next round');
+            setScore(score + 1); // Incrementar el puntaje
             setTimeout(() => {
                 const newSequence = [...sequence, ...generateSequence(1)];
                 setSequence(newSequence);
@@ -94,6 +98,9 @@ const Memory = () => {
             }, 1000);
         } else {
             setMessage('Incorrect. Press "Start Game!" to try again');
+            setScreens((prevScreens) =>
+                prevScreens.map((screen) => ({ ...screen, active: false }))
+            ); // Reiniciar todos los LEDs
             setIsPlaying(false);
         }
     };
@@ -103,14 +110,16 @@ const Memory = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '10px' }}>
+        <div style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", textAlign: "center",  }}>
             <Header 
                 title="Memory Game" 
                 onStart={startGame} 
                 onDifficultyChange={handleDifficultyChange} 
             />
             <p>{message}</p>
-            <MemoryMesh screens={screens} onScreenClick={handleScreenClick} />
+            
+            <MemoryMesh screens={screens} onScreenClick={handleScreenClick} isClickable={isPlaying} />
+            <p>Score: {score}</p>
         </div>
     );
 };

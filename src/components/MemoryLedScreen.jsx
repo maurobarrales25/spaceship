@@ -1,8 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import soundLedScreen from "../assets/soundLedScreen.mp3";
 
-const MemoryLedScreen = ({ id, isActive, onClick }) => {
+const MemoryLedScreen = ({ id, isActive, onClick, isClickable }) => {
     const [active, setActive] = useState(isActive);
     const audio = new Audio(soundLedScreen);
 
@@ -11,7 +10,7 @@ const MemoryLedScreen = ({ id, isActive, onClick }) => {
     }, [isActive]);
 
     const handleClick = () => {
-        if (!active) {
+        if (isClickable && !active) {
             setActive(true);
             audio.play();
             onClick(id);
@@ -26,7 +25,7 @@ const MemoryLedScreen = ({ id, isActive, onClick }) => {
                 height: "7rem",
                 backgroundColor: active ? "#17d3f0" : "grey",
                 display: "inline-block",
-                cursor: "pointer",
+                cursor: isClickable ? "pointer" : "not-allowed",
                 border: "3px solid black",
                 borderRadius: "10px"
             }}

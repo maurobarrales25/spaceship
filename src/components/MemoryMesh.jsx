@@ -1,7 +1,7 @@
 import React from "react";
 import MemoryLedScreen from "./MemoryLedScreen";
 
-const MemoryMesh = ({ screens, onScreenClick }) => {
+const MemoryMesh = ({ screens, onScreenClick, isClickable  }) => {
     return (
         <div style={{
             display: "grid",
@@ -19,6 +19,7 @@ const MemoryMesh = ({ screens, onScreenClick }) => {
                     id={screen.id}
                     isActive={screen.active}
                     onClick={onScreenClick}
+                    isClickable={isClickable}
                 />
             ))}
         </div>
