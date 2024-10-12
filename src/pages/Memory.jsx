@@ -15,8 +15,8 @@ const Memory = () => {
     const [userSequence, setUserSequence] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [message, setMessage] = useState('Press "Start Game!" to begin the game');
-    const [difficulty, setDifficulty] = useState(700); // Default to easy
-    const [score, setScore] = useState(0); // Estado para el puntaje
+    const [difficulty, setDifficulty] = useState(700);
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         if (isPlaying && userSequence.length === sequence.length) {
@@ -29,8 +29,8 @@ const Memory = () => {
         const newSequence = generateSequence(1);
         setSequence(newSequence);
         setUserSequence([]);
-        setScore(0); // Reiniciar el puntaje al iniciar el juego
-        setIsPlaying(false); // Desactivar clics durante la reproducción de la secuencia
+        setScore(0);
+        setIsPlaying(false);
         playSequence(newSequence);
     };
 
@@ -44,7 +44,7 @@ const Memory = () => {
     };
 
     const playSequence = (sequence) => {
-        setIsPlaying(false); // Desactivar clics durante la reproducción de la secuencia
+        setIsPlaying(false);
         sequence.forEach((id, index) => {
             setTimeout(() => {
                 activateScreen(id);
@@ -55,7 +55,7 @@ const Memory = () => {
         });
         setTimeout(() => {
             setMessage('Repeat the sequence');
-            setIsPlaying(true); // Permitir clics en los LEDs
+            setIsPlaying(true);
         }, sequence.length * (difficulty + 300));
     };
 
@@ -88,19 +88,19 @@ const Memory = () => {
     const checkSequence = () => {
         if (JSON.stringify(sequence) === JSON.stringify(userSequence)) {
             setMessage('Correct! Get ready for the next round');
-            setScore(score + 1); // Incrementar el puntaje
+            setScore(score + 1);
             setTimeout(() => {
                 const newSequence = [...sequence, ...generateSequence(1)];
                 setSequence(newSequence);
                 setUserSequence([]);
-                setIsPlaying(false); // Desactivar clics durante la reproducción de la secuencia
+                setIsPlaying(false);
                 playSequence(newSequence);
             }, 1000);
         } else {
             setMessage('Incorrect. Press "Start Game!" to try again');
             setScreens((prevScreens) =>
                 prevScreens.map((screen) => ({ ...screen, active: false }))
-            ); // Reiniciar todos los LEDs
+            );
             setIsPlaying(false);
         }
     };
