@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Mesh from "../components/Mesh";
+import ReflexMesh from "../components/ReflexMesh";
 import Header from "../components/Header";
 
 const Reflex = () => {
@@ -93,7 +93,7 @@ const Reflex = () => {
                 {gameStarted && <h2>Time: {timer}s</h2>}
             </div>
         
-            <Mesh screens={screens} onScreenClick={handleScreenClick} />
+            <ReflexMesh screens={screens} onScreenClick={handleScreenClick} />
 
             {!gameStarted && (
                 <div>

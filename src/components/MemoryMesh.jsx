@@ -1,7 +1,7 @@
 import React from "react";
-import LedScreen from "./LedScreen";
+import MemoryLedScreen from "./MemoryLedScreen";
 
-const Mesh = ({ screens, onScreenClick }) => {
+const MemoryMesh = ({ screens, onScreenClick }) => {
     return (
         <div style={{
             display: "grid",
@@ -13,16 +13,16 @@ const Mesh = ({ screens, onScreenClick }) => {
             alignItems: "center",
             gap: "3rem"
         }}>
-            {screens.map((screen) => (
-                <LedScreen
+            {screens.map(screen => (
+                <MemoryLedScreen
                     key={screen.id}
                     id={screen.id}
                     isActive={screen.active}
-                    onClick={() => onScreenClick(screen.id)} 
+                    onClick={onScreenClick}
                 />
             ))}
         </div>
     );
 };
 
-export default Mesh;
+export default MemoryMesh;

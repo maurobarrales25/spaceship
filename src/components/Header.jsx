@@ -5,7 +5,7 @@ const Header = ({ title, onStart, onDifficultyChange }) => {
         const value = event.target.value;
         let difficultyValue;
 
-        if (value === "east"){
+        if (value === "easy"){
             difficultyValue = 0.7;
         } else if (value === "medium"){
             difficultyValue = 0.5;
