@@ -12,6 +12,10 @@ const Home = () => {
         navigate("/memory"); 
     };
 
+    const handleStartLearningGame = () => {
+        navigate("/Learning"); 
+    };
+
     return (
         <div style={{ textAlign: "center", marginTop: "10px" }}>
             <h1>Welcome to Gaming Beyond Earth!</h1>
@@ -45,6 +49,21 @@ const Home = () => {
                     }}
                 >
                     Play Memory Mode
+                </button>
+
+                <button
+                    onClick={handleStartLearningGame}
+                    style={{
+                        padding: "10px 20px",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        backgroundColor: "#4CAF50",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                    }}
+                >
+                    Play Learning Mode
                 </button>
             </div>
         </div>
