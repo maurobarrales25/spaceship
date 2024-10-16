@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import soundLedScreen from "../assets/soundLedScreen.mp3"
 
-const LedScreen = ({id, isActive, onClick}) => {
+const ReflexLedScreen = ({id, isActive, onClick}) => {
     const [active, setActive] = useState(isActive);
     const audio = new Audio(soundLedScreen);
 
@@ -36,4 +36,4 @@ const LedScreen = ({id, isActive, onClick}) => {
     )
 }
 
-export default LedScreen;
+export default ReflexLedScreen;

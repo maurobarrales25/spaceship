@@ -1,7 +1,7 @@
 import React from "react";
-import LedScreen from "./LedScreen";
+import ReflexLedScreen from "./ReflexLedScreen";
 
-const Mesh = ({ screens, onScreenClick }) => {
+const ReflexMesh = ({ screens, onScreenClick }) => {
     return (
         <div style={{
             display: "grid",
@@ -14,7 +14,7 @@ const Mesh = ({ screens, onScreenClick }) => {
             gap: "3rem"
         }}>
             {screens.map((screen) => (
-                <LedScreen
+                <ReflexLedScreen
                     key={screen.id}
                     id={screen.id}
                     isActive={screen.active}
@@ -25,4 +25,4 @@ const Mesh = ({ screens, onScreenClick }) => {
     );
 };
 
-export default Mesh;
+export default ReflexMesh;
