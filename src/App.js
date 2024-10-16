@@ -15,7 +15,9 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />  
-          <Route path="/reflex" element={<Reflex />} /> 
+          <Route path="/reflex" element={<Reflex />} />
+          <Route path="/memory" element={<Memory />} />
+          <Route path="/learning" element={<Learning />} />
         </Routes>
       </Router>
     </GameProvider>

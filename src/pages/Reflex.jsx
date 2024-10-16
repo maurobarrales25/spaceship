@@ -93,7 +93,7 @@ const Reflex = () => {
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            backgroundImage: 'url("/interiorship.jpg")',
+            backgroundImage: 'url("/starr.jpg")',
             backgroundSize: "cover", 
             backgroundPosition: "center",
             height: "100vh", 
