@@ -5,19 +5,20 @@ import Reflex from "./pages/Reflex";
 import Memory from "./pages/Memory";
 import Learning from "./pages/Learning";
 import './App.css';
+import GameProvider from "./context/contextGame";
 
 
 const App = () => {
   
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />  
-        <Route path="/reflex" element={<Reflex />} />
-        <Route path="/memory" element={<Memory />} />
-        <Route path="/learning" element={<Learning />} />
-      </Routes>
-    </Router>
+    <GameProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />  
+          <Route path="/reflex" element={<Reflex />} /> 
+        </Routes>
+      </Router>
+    </GameProvider>
   );
 };
 

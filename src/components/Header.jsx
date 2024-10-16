@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { GameContext } from "../context/contextGame";
 
-const Header = ({ title, onStart, onDifficultyChange }) => {
+const Header = ({ title, onStart }) => {
+
+    const {updateGame} = useContext(GameContext);
 
     const handleDifficultyChange = (event) => {
         const value = event.target.value;
@@ -13,7 +17,7 @@ const Header = ({ title, onStart, onDifficultyChange }) => {
             difficultyValue = 0.3
         }
 
-        onDifficultyChange(difficultyValue);
+        updateGame({difficulty: difficultyValue});
     }
 
     const buttonStyle = {
@@ -41,6 +45,7 @@ const Header = ({ title, onStart, onDifficultyChange }) => {
             width: "100%"
         }}>
             <h1>{title}</h1>
+            <p> {title} Playability: Click as fast as you can to test your reflexs!!</p> {/* Ejemplo de cómo usar game */}
             <button style={buttonStyle} onClick={onStart}>Start Game!</button>
             <div>
                 <label>Select Difficulty: </label>
