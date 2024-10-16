@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Mesh from "../components/Mesh";
 import Header from "../components/Header";
+import { GameContext } from "../context/contextGame";
+
 
 const Reflex = () => {
+    const { game } = useContext(GameContext);
+
+
     const [screens, setScreens] = useState(
         Array.from({ length: 6 }, (_, index) => ({
             id: index + 1,
@@ -13,8 +18,7 @@ const Reflex = () => {
     const [gameStarted, setGameStarted] = useState(false);
     const [timer, setTimer] = useState(0); 
     const [reactionTimes, setReactionTimes] = useState([]);
-    const [currentScreen, setCurrentScreen] = useState(null); 
-    const [difficulty, setDifficulty] = useState(0.7); 
+    const [currentScreen, setCurrentScreen] = useState(null);  
     const [startTime, setStartTime] = useState(null); 
     const [hits, sethits] = useState(0); 
     const [showReactionTimes, setShowReactionTimes] = useState(false); 
@@ -74,7 +78,7 @@ const Reflex = () => {
                 if (timer < 30) {
                     activateRandomScreen(); 
                 }
-            }, difficulty * 1000); 
+            }, game.difficulty * 1000); 
         }
     };
 
@@ -86,9 +90,8 @@ const Reflex = () => {
         <div style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", textAlign: "center",  }}>
             <div >
                 <Header
-                    title="Reflex Mode"
+                    title={`Reflex Mode ${game.mode}`} 
                     onStart={startGame}
-                    onDifficultyChange={setDifficulty} 
                     />
                 {gameStarted && <h2>Time: {timer}s</h2>}
             </div>
