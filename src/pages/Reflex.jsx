@@ -87,7 +87,18 @@ const Reflex = () => {
     };
 
     return (
-        <div style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", textAlign: "center",  }}>
+        <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            backgroundImage: 'url("/interiorship.jpg")',
+            backgroundSize: "cover", 
+            backgroundPosition: "center",
+            height: "100vh", 
+            color: "white", 
+        }}>
             <div >
                 <Header
                     title={`Reflex Mode ${game.mode}`} 
