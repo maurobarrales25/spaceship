@@ -27,12 +27,12 @@ const Learning = () => {
             setSelectedOption(id);
 
             setScreens(screens.map(screen => ({ ...screen, color: "grey" })));
-            
+
             if (id === correctOptionId) {
-                setFeedbackMessage('¡Correcto!');
+                setFeedbackMessage('¡Correct!');
                 updateScreenColor(id, "green");
             } else {
-                setFeedbackMessage('Incorrecto, intenta de nuevo.');
+                setFeedbackMessage('Incorrect, try again.');
                 updateScreenColor(id, "red");
             }
 
@@ -112,15 +112,15 @@ const Learning = () => {
                 }}
                 onClick={() => navigate('/')}
             >
-                Volver a Inicio
+                Return Home
             </button>
 
-            <h1>Selecciona la dificultad:</h1>
-            <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Fácil</button>
-            <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medio</button>
-            <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Difícil</button>
+            <h1>Select Difficulty:</h1>
+            <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Easy</button>
+            <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medium</button>
+            <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Hard</button>
     
-            <h1 style={{ marginTop: '2rem' }}>Pregunta:</h1>
+            <h1 style={{ marginTop: '2rem' }}>Question:</h1>
             <h2>{preguntas[currentQuestion].question}</h2>
             <Mesh 
                 screens={screens} 

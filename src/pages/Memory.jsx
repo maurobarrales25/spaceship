@@ -87,7 +87,7 @@ const Memory = () => {
 
             const currentIndex = updatedUserSequence.length - 1;
             if (sequence[currentIndex] !== id) {
-                setMessage('Incorrecto. Presiona "Start Game!" para intentarlo de nuevo');
+                setMessage('Incorrect. Press "Start Game!" to retry.');
                 setScreens((prevScreens) =>
                     prevScreens.map((screen) => ({ ...screen, active: false }))
                 );
@@ -151,7 +151,7 @@ const Memory = () => {
                 }}
                 onClick={() => navigate('/')}
             >
-                Volver a Inicio
+                Return Home
             </button>
 
             <Header 
