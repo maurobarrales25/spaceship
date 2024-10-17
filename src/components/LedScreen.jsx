@@ -30,7 +30,7 @@ const LedScreen = ({ id, isActive, onClick, mode, color, optionText, isClickable
                     cursor: isClickable ? "pointer" : "default", 
                     opacity: isActive ? 1 : 0.5,
                     border: "2px solid black",
-                    borderRadius: "50%", // Forma circular
+                    borderRadius: "50%", 
                     transition: "opacity 0.3s ease, background-color 0.3s ease", 
                 };
             case "reflex":

@@ -13,7 +13,7 @@ const CombinedMesh = ({ screens, onScreenClick, mode, isClickable, options }) =>
                 mode={mode} 
                 color={screen.color} 
                 optionText={options ? options[index]?.text : null} 
-                isClickable={isClickable} // Para memory
+                isClickable={isClickable} 
             />
         );
     };
