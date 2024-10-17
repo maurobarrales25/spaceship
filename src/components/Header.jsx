@@ -45,7 +45,7 @@ const Header = ({ title, onStart }) => {
             width: "100%"
         }}>
             <h1>{title}</h1>
-            <p> {title} Playability: Click as fast as you can to test your reflexs!!</p> {/* Ejemplo de cómo usar game */}
+            <p> {title} Playability: Click as fast as you can to test your reflexs!!</p> 
             <button style={buttonStyle} onClick={onStart}>Start Game!</button>
             <div>
                 <label>Select Difficulty: </label>

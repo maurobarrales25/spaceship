@@ -1,45 +1,21 @@
 import React from "react";
-import ReflexLedScreen from "./ReflexLedScreen";
-import MemoryLedScreen from "./MemoryLedScreen";
-import LearningLedScreen from "./LearningLedScreen";
+import LedScreen from "./LedScreen"; // Importamos el componente unificado
 
 const CombinedMesh = ({ screens, onScreenClick, mode, isClickable, options }) => {
-    // Dependiendo del modo, elegimos qué LED screen renderizar
+    // Dependiendo del modo, renderizamos LedScreen con las propiedades adecuadas
     const renderLedScreen = (screen, index) => {
-        switch (mode) {
-            case "reflex":
-                return (
-                    <ReflexLedScreen
-                        key={screen.id}
-                        id={screen.id}
-                        isActive={screen.active}
-                        onClick={() => onScreenClick(screen.id)}
-                    />
-                );
-            case "memory":
-                return (
-                    <MemoryLedScreen
-                        key={screen.id}
-                        id={screen.id}
-                        isActive={screen.active}
-                        onClick={onScreenClick}
-                        isClickable={isClickable}
-                    />
-                );
-            case "learning":
-                return (
-                    <LearningLedScreen
-                        key={screen.id}
-                        id={screen.id}
-                        isActive={screen.active}
-                        color={screen.color}
-                        onClick={onScreenClick}
-                        optionText={options[index]?.text || "N/A"}
-                    />
-                );
-            default:
-                return null;
-        }
+        return (
+            <LedScreen
+                key={screen.id}
+                id={screen.id}
+                isActive={screen.active}
+                onClick={() => onScreenClick(screen.id)}
+                mode={mode} 
+                color={screen.color} 
+                optionText={options ? options[index]?.text : null} 
+                isClickable={isClickable} // Para memory
+            />
+        );
     };
 
     return (

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 
 const Memory = () => {
+    const navigate = useNavigate();
     const [screens, setScreens] = useState([
         { id: 1, active: false },
         { id: 2, active: false },

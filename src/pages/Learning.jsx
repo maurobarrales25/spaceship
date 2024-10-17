@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 
 const Learning = () => {
+    const navigate = useNavigate(); 
     const [screens, setScreens] = useState([
         { id: 1, active: false, color: "grey" },
         { id: 2, active: false, color: "grey" },
@@ -181,6 +183,25 @@ const Learning = () => {
             color: "white",
             overflow: 'hidden'
         }}>
+            {/* Botón Volver a Inicio */}
+            <button 
+                style={{
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px',
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    backgroundColor: '#FF5733',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                }}
+                onClick={() => navigate('/')} // Navegación a la pantalla de inicio
+            >
+                Volver a Inicio
+            </button>
+
             <h1>Selecciona la dificultad:</h1>
             <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Fácil</button>
             <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medio</button>
