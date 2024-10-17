@@ -32,7 +32,7 @@ const Home = () => {
                 <img src="./image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
             </div>
             <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
-            <p style={{ color: "white"}}>Pick your Game Mode</p>
+            <p style={{ color: "white", fontWeight:"550"}}>Pick your Game Mode</p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"  }}>
                 <button
                     onClick={handleStartReflexGame}

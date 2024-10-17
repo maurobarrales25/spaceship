@@ -18,6 +18,7 @@ const Learning = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [difficulty, setDifficulty] = useState('easy'); 
+    const [score, setScore] = useState(0);
 
     const preguntas = preguntasRespuestas[difficulty];
 
@@ -31,6 +32,7 @@ const Learning = () => {
             if (id === correctOptionId) {
                 setFeedbackMessage('¡Correct!');
                 updateScreenColor(id, "green");
+                setScore(prevScore => prevScore + 1);
             } else {
                 setFeedbackMessage('Incorrect, try again.');
                 updateScreenColor(id, "red");
@@ -51,7 +53,6 @@ const Learning = () => {
             }))
         );
     };
-    
 
     const nextQuestion = () => {
         if (currentQuestion + 1 < preguntas.length) {
@@ -69,6 +70,7 @@ const Learning = () => {
         setDifficulty(level);
         setCurrentQuestion(0);
         setFeedbackMessage('');
+        setScore(0);
         setScreens(screens.map(screen => ({ ...screen, active: false, color: "grey" })));
     };
 
@@ -92,7 +94,8 @@ const Learning = () => {
             backgroundImage: 'url("/starr.jpg")',
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center', 
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed', 
             minHeight: '100vh',
             color: "white",
             overflow: 'hidden'
@@ -115,21 +118,25 @@ const Learning = () => {
                 Return Home
             </button>
 
-            <h1>Select Difficulty:</h1>
+            <h3>Select Difficulty:</h3>
             <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Easy</button>
             <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medium</button>
             <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Hard</button>
-    
+
             <h1 style={{ marginTop: '2rem' }}>Question:</h1>
-            <h2>{preguntas[currentQuestion].question}</h2>
+            <h3>{preguntas[currentQuestion].question}</h3>
+
             <Mesh 
                 screens={screens} 
                 onScreenClick={handleOptionClick} 
                 mode="learning"
                 options={preguntas[currentQuestion].options}
             />
-    
-            <p style={{ marginTop: '2rem' }}>{feedbackMessage}</p>
+
+            {/* Mostrar el mensaje debajo de la pregunta */}
+            <p style={{ marginTop: '1rem', fontSize: '1.2rem' }}>{feedbackMessage}</p> 
+            {/* Mostrar el puntaje */}
+            <p style={{ marginTop: '2rem' }}>Score: {score}</p>
         </div>
     );
 };
