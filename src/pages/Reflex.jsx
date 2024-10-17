@@ -95,10 +95,12 @@ const Reflex = () => {
             alignItems: "center",
             textAlign: "center",
             backgroundImage: 'url("/starr.jpg")',
-            backgroundSize: "cover", 
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
             backgroundPosition: "center",
-            height: "100vh", 
-            color: "white", 
+            minHeight: "100vh", 
+            color: "white",
+            overflow: 'hidden',
         }}>
 
             {/* Botón para volver al inicio */}
@@ -117,7 +119,7 @@ const Reflex = () => {
                 }}
                 onClick={() => navigate('/')}
             >
-                Volver a Inicio
+                Return Home
             </button>
 
             <div >
@@ -132,20 +134,21 @@ const Reflex = () => {
 
             {!gameStarted && (
                 <div>
-                    <button onClick={toggleReactionTimes}>
+                    <button onClick={toggleReactionTimes} style={{backgroundColor: "rgba(151, 191, 209, 0.6)", color: "white", fontFamily: "sans-serif", fontWeight: "550", border:"0", borderRadius:"20px"}}>
                         {showReactionTimes ? "Hide Reaction Times" : "Show Reaction Times"}
                     </button>
                 </div>
             )}
 
             {showReactionTimes && (
-                <div>
+                <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
                     <h3>Reaction Times</h3>
                     {reactionTimes.map((time, index) => (
                         <p key={index}>Screen {index + 1}: {time} seconds</p>
                     ))}
                 </div>
             )}
+
 
             {!gameStarted && timer >= 15 && (
                 <div>

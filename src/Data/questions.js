@@ -1,130 +1,129 @@
-// preguntasRespuestas.js
 const preguntasRespuestas = {
     easy: [
         {
-            question: '¿Cuál es la capital de Francia?',
+            question: 'What is the capital of France?',
             options: [
-                { id: 1, text: 'París' },
-                { id: 2, text: 'Londres' },
+                { id: 1, text: 'Paris' },
+                { id: 2, text: 'London' },
                 { id: 3, text: 'Madrid' },
-                { id: 4, text: 'Roma' },
-                { id: 5, text: 'Berlín' },
-                { id: 6, text: 'Bruselas' }
+                { id: 4, text: 'Rome' },
+                { id: 5, text: 'Berlin' },
+                { id: 6, text: 'Brussels' }
             ],
             correctOptionId: 1
         },
         {
-            question: '¿Cuál es el planeta más grande del sistema solar?',
+            question: 'Which planet of our solar system is the biggest?',
             options: [
-                { id: 1, text: 'Marte' },
-                { id: 2, text: 'Júpiter' },
-                { id: 3, text: 'Saturno' },
-                { id: 4, text: 'Neptuno' },
-                { id: 5, text: 'Urano' },
+                { id: 1, text: 'Mars' },
+                { id: 2, text: 'Jupiter' },
+                { id: 3, text: 'Saturn' },
+                { id: 4, text: 'Neptune' },
+                { id: 5, text: 'Uranus' },
                 { id: 6, text: 'Venus' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Qué gas respiramos principalmente?',
+            question: 'What gas do we mainly breathe?',
             options: [
-                { id: 1, text: 'Oxígeno' },
-                { id: 2, text: 'Nitrógeno' },
-                { id: 3, text: 'Dióxido de carbono' },
-                { id: 4, text: 'Hidrógeno' },
-                { id: 5, text: 'Helio' },
-                { id: 6, text: 'Metano' }
+                { id: 1, text: 'Oxygen' },
+                { id: 2, text: 'Nitrogen' },
+                { id: 3, text: 'Carbon dioxide' },
+                { id: 4, text: 'Hydrogen' },
+                { id: 5, text: 'Helium' },
+                { id: 6, text: 'Methane' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Qué día se celebra Navidad?',
+            question: 'On what day is Christmas celebrated?',
             options: [
-                { id: 1, text: '31 de diciembre' },
-                { id: 2, text: '25 de diciembre' },
-                { id: 3, text: '15 de agosto' },
-                { id: 4, text: '1 de enero' },
-                { id: 5, text: '14 de febrero' },
-                { id: 6, text: '6 de enero' }
+                { id: 1, text: 'December 31st' },
+                { id: 2, text: 'December 25th' },
+                { id: 3, text: 'August 15th' },
+                { id: 4, text: 'January 1st' },
+                { id: 5, text: 'February 14th' },
+                { id: 6, text: 'January 6th' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Cuál es el océano más grande del mundo?',
+            question: 'Which is the largest ocean in the world?',
             options: [
-                { id: 1, text: 'Océano Atlántico' },
-                { id: 2, text: 'Océano Índico' },
-                { id: 3, text: 'Océano Pacífico' },
-                { id: 4, text: 'Océano Ártico' },
-                { id: 5, text: 'Océano Antártico' },
-                { id: 6, text: 'Mar Caribe' }
+                { id: 1, text: 'Atlantic Ocean' },
+                { id: 2, text: 'Indian Ocean' },
+                { id: 3, text: 'Pacific Ocean' },
+                { id: 4, text: 'Arctic Ocean' },
+                { id: 5, text: 'Southern Ocean' },
+                { id: 6, text: 'Caribbean Sea' }
             ],
             correctOptionId: 3
         },
         {
-            question: '¿Qué instrumento musical tiene teclas blancas y negras?',
+            question: 'Which musical instrument has black and white keys?',
             options: [
-                { id: 1, text: 'Guitarra' },
-                { id: 2, text: 'Violín' },
+                { id: 1, text: 'Guitar' },
+                { id: 2, text: 'Violin' },
                 { id: 3, text: 'Piano' },
-                { id: 4, text: 'Trompeta' },
-                { id: 5, text: 'Flauta' },
-                { id: 6, text: 'Batería' }
+                { id: 4, text: 'Trumpet' },
+                { id: 5, text: 'Flute' },
+                { id: 6, text: 'Drums' }
             ],
             correctOptionId: 3
         },
         {
-            question: '¿Cuál es el animal más rápido del mundo?',
+            question: 'What is the fastest animal in the world?',
             options: [
-                { id: 1, text: 'León' },
-                { id: 2, text: 'Guepardo' },
-                { id: 3, text: 'Águila' },
-                { id: 4, text: 'Tiburón' },
-                { id: 5, text: 'Delfín' },
-                { id: 6, text: 'Elefante' }
+                { id: 1, text: 'Lion' },
+                { id: 2, text: 'Cheetah' },
+                { id: 3, text: 'Eagle' },
+                { id: 4, text: 'Shark' },
+                { id: 5, text: 'Dolphin' },
+                { id: 6, text: 'Elephant' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Cuál es el metal más ligero?',
+            question: 'Which is the lightest metal?',
             options: [
-                { id: 1, text: 'Plomo' },
-                { id: 2, text: 'Cobre' },
-                { id: 3, text: 'Oro' },
-                { id: 4, text: 'Litio' },
-                { id: 5, text: 'Hierro' },
-                { id: 6, text: 'Aluminio' }
+                { id: 1, text: 'Lead' },
+                { id: 2, text: 'Copper' },
+                { id: 3, text: 'Gold' },
+                { id: 4, text: 'Lithium' },
+                { id: 5, text: 'Iron' },
+                { id: 6, text: 'Aluminum' }
             ],
             correctOptionId: 4
         },
         {
-            question: '¿Qué deporte se juega con una pelota y un bate?',
+            question: 'Which sport is played with a ball and a bat?',
             options: [
-                { id: 1, text: 'Fútbol' },
-                { id: 2, text: 'Tenis' },
+                { id: 1, text: 'Soccer' },
+                { id: 2, text: 'Tennis' },
                 { id: 3, text: 'Golf' },
-                { id: 4, text: 'Béisbol' },
-                { id: 5, text: 'Baloncesto' },
-                { id: 6, text: 'Voleibol' }
+                { id: 4, text: 'Baseball' },
+                { id: 5, text: 'Basketball' },
+                { id: 6, text: 'Volleyball' }
             ],
             correctOptionId: 4
         },
         {
-            question: '¿Qué color obtienes al mezclar rojo y amarillo?',
+            question: 'What color do you get when you mix red and yellow?',
             options: [
-                { id: 1, text: 'Naranja' },
-                { id: 2, text: 'Verde' },
-                { id: 3, text: 'Morado' },
-                { id: 4, text: 'Azul' },
-                { id: 5, text: 'Blanco' },
-                { id: 6, text: 'Negro' }
+                { id: 1, text: 'Orange' },
+                { id: 2, text: 'Green' },
+                { id: 3, text: 'Purple' },
+                { id: 4, text: 'Blue' },
+                { id: 5, text: 'White' },
+                { id: 6, text: 'Black' }
             ],
             correctOptionId: 1
         }
     ],
     medium: [
         {
-            question: '¿En qué año llegó el hombre a la Luna?',
+            question: 'In what year did man land on the moon?',
             options: [
                 { id: 1, text: '1965' },
                 { id: 2, text: '1969' },
@@ -136,7 +135,7 @@ const preguntasRespuestas = {
             correctOptionId: 2
         },
         {
-            question: '¿Cuál es la fórmula del agua?',
+            question: 'What is the formula for water?',
             options: [
                 { id: 1, text: 'CO2' },
                 { id: 2, text: 'H2O' },
@@ -148,7 +147,7 @@ const preguntasRespuestas = {
             correctOptionId: 2
         },
         {
-            question: '¿Qué tipo de sangre es el donante universal?',
+            question: 'What blood type is the universal donor?',
             options: [
                 { id: 1, text: 'A+' },
                 { id: 2, text: 'O-' },
@@ -160,31 +159,31 @@ const preguntasRespuestas = {
             correctOptionId: 2
         },
         {
-            question: '¿Cuál es el elemento más abundante en el universo?',
+            question: 'What is the most abundant element in the universe?',
             options: [
-                { id: 1, text: 'Oxígeno' },
-                { id: 2, text: 'Hidrógeno' },
-                { id: 3, text: 'Helio' },
-                { id: 4, text: 'Carbono' },
-                { id: 5, text: 'Nitrógeno' },
-                { id: 6, text: 'Litio' }
+                { id: 1, text: 'Oxygen' },
+                { id: 2, text: 'Hydrogen' },
+                { id: 3, text: 'Helium' },
+                { id: 4, text: 'Carbon' },
+                { id: 5, text: 'Nitrogen' },
+                { id: 6, text: 'Lithium' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Cuál es el órgano más grande del cuerpo humano?',
+            question: 'What is the largest organ in the human body?',
             options: [
-                { id: 1, text: 'Pulmones' },
-                { id: 2, text: 'Corazón' },
-                { id: 3, text: 'Cerebro' },
-                { id: 4, text: 'Hígado' },
-                { id: 5, text: 'Piel' },
-                { id: 6, text: 'Riñones' }
+                { id: 1, text: 'Lungs' },
+                { id: 2, text: 'Heart' },
+                { id: 3, text: 'Brain' },
+                { id: 4, text: 'Liver' },
+                { id: 5, text: 'Skin' },
+                { id: 6, text: 'Kidneys' }
             ],
             correctOptionId: 5
         },
         {
-            question: '¿Quién pintó "La última cena"?',
+            question: 'Who painted "The Last Supper"?',
             options: [
                 { id: 1, text: 'Pablo Picasso' },
                 { id: 2, text: 'Vincent van Gogh' },
@@ -196,7 +195,7 @@ const preguntasRespuestas = {
             correctOptionId: 4
         },
         {
-            question: '¿Qué lenguaje de programación se utiliza para el desarrollo web front-end?',
+            question: 'What programming language is used for front-end web development?',
             options: [
                 { id: 1, text: 'Python' },
                 { id: 2, text: 'C++' },
@@ -208,19 +207,19 @@ const preguntasRespuestas = {
             correctOptionId: 4
         },
         {
-            question: '¿Qué país tiene el mayor número de pirámides en el mundo?',
+            question: 'Which country has the most pyramids in the world?',
             options: [
-                { id: 1, text: 'Egipto' },
-                { id: 2, text: 'México' },
-                { id: 3, text: 'Sudán' },
-                { id: 4, text: 'Perú' },
+                { id: 1, text: 'Egypt' },
+                { id: 2, text: 'Mexico' },
+                { id: 3, text: 'Sudan' },
+                { id: 4, text: 'Peru' },
                 { id: 5, text: 'China' },
                 { id: 6, text: 'India' }
             ],
             correctOptionId: 3
         },
         {
-            question: '¿Cuál es la velocidad de la luz?',
+            question: 'What is the speed of light?',
             options: [
                 { id: 1, text: '300,000 km/s' },
                 { id: 2, text: '150,000 km/s' },
@@ -232,21 +231,21 @@ const preguntasRespuestas = {
             correctOptionId: 1
         },
         {
-            question: '¿En qué país se encuentra la Torre Eiffel?',
+            question: 'In which country is the Eiffel Tower located?',
             options: [
-                { id: 1, text: 'España' },
-                { id: 2, text: 'Italia' },
-                { id: 3, text: 'Francia' },
-                { id: 4, text: 'Reino Unido' },
-                { id: 5, text: 'Estados Unidos' },
-                { id: 6, text: 'Alemania' }
+                { id: 1, text: 'Spain' },
+                { id: 2, text: 'Italy' },
+                { id: 3, text: 'France' },
+                { id: 4, text: 'United Kingdom' },
+                { id: 5, text: 'United States' },
+                { id: 6, text: 'Germany' }
             ],
             correctOptionId: 3
         }
     ],
     hard: [
         {
-            question: '¿Quién desarrolló la teoría de la relatividad?',
+            question: 'Who developed the theory of relativity?',
             options: [
                 { id: 1, text: 'Isaac Newton' },
                 { id: 2, text: 'Galileo Galilei' },
@@ -258,19 +257,19 @@ const preguntasRespuestas = {
             correctOptionId: 3
         },
         {
-            question: '¿Qué partícula subatómica tiene carga negativa?',
+            question: 'What subatomic particle has a negative charge?',
             options: [
-                { id: 1, text: 'Protones' },
-                { id: 2, text: 'Neutrones' },
-                { id: 3, text: 'Electrones' },
-                { id: 4, text: 'Fotones' },
+                { id: 1, text: 'Protons' },
+                { id: 2, text: 'Neutrons' },
+                { id: 3, text: 'Electrons' },
+                { id: 4, text: 'Photons' },
                 { id: 5, text: 'Quarks' },
-                { id: 6, text: 'Gluones' }
+                { id: 6, text: 'Gluons' }
             ],
             correctOptionId: 3
         },
         {
-            question: '¿Cuál es la ecuación más famosa de la física?',
+            question: 'What is the most famous equation in physics?',
             options: [
                 { id: 1, text: 'F = ma' },
                 { id: 2, text: 'E = mc²' },
@@ -282,7 +281,7 @@ const preguntasRespuestas = {
             correctOptionId: 2
         },
         {
-            question: '¿Qué científico es considerado el padre de la genética?',
+            question: 'Which scientist is considered the father of genetics?',
             options: [
                 { id: 1, text: 'Charles Darwin' },
                 { id: 2, text: 'Gregor Mendel' },
@@ -294,74 +293,74 @@ const preguntasRespuestas = {
             correctOptionId: 2
         },
         {
-            question: '¿Qué es el bosón de Higgs?',
+            question: 'What is the Higgs boson?',
             options: [
-                { id: 1, text: 'Una partícula teórica' },
-                { id: 2, text: 'Una onda gravitacional' },
-                { id: 3, text: 'Un campo electromagnético' },
-                { id: 4, text: 'Una teoría del todo' },
-                { id: 5, text: 'Una partícula subatómica' },
-                { id: 6, text: 'Un experimento científico' }
+                { id: 1, text: 'A theoretical particle' },
+                { id: 2, text: 'A gravitational wave' },
+                { id: 3, text: 'An electromagnetic field' },
+                { id: 4, text: 'A theory of everything' },
+                { id: 5, text: 'A subatomic particle' },
+                { id: 6, text: 'A scientific experiment' }
             ],
             correctOptionId: 5
         },
         {
-            question: '¿En qué galaxia se encuentra la Tierra?',
+            question: 'In which galaxy is Earth located?',
             options: [
-                { id: 1, text: 'Galaxia de Andrómeda' },
-                { id: 2, text: 'Vía Láctea' },
-                { id: 3, text: 'Galaxia del Triángulo' },
-                { id: 4, text: 'Galaxia de Sagitario' },
-                { id: 5, text: 'Galaxia del Sombrero' },
-                { id: 6, text: 'Galaxia de la Taza' }
+                { id: 1, text: 'Andromeda Galaxy' },
+                { id: 2, text: 'Milky Way' },
+                { id: 3, text: 'Triangulum Galaxy' },
+                { id: 4, text: 'Sagittarius Galaxy' },
+                { id: 5, text: 'Sombrero Galaxy' },
+                { id: 6, text: 'Cup Galaxy' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Qué tipo de energía utiliza una central nuclear?',
+            question: 'What type of energy does a nuclear power plant use?',
             options: [
-                { id: 1, text: 'Energía eólica' },
-                { id: 2, text: 'Energía solar' },
-                { id: 3, text: 'Energía nuclear' },
-                { id: 4, text: 'Energía hidráulica' },
-                { id: 5, text: 'Energía geotérmica' },
-                { id: 6, text: 'Energía de biomasa' }
+                { id: 1, text: 'Wind energy' },
+                { id: 2, text: 'Solar energy' },
+                { id: 3, text: 'Nuclear energy' },
+                { id: 4, text: 'Hydraulic energy' },
+                { id: 5, text: 'Geothermal energy' },
+                { id: 6, text: 'Biomass energy' }
             ],
             correctOptionId: 3
         },
         {
-            question: '¿Cuál es el idioma más hablado del mundo?',
+            question: 'What is the most spoken language in the world?',
             options: [
-                { id: 1, text: 'Inglés' },
-                { id: 2, text: 'Español' },
-                { id: 3, text: 'Chino mandarín' },
-                { id: 4, text: 'Árabe' },
+                { id: 1, text: 'English' },
+                { id: 2, text: 'Spanish' },
+                { id: 3, text: 'Mandarin Chinese' },
+                { id: 4, text: 'Arabic' },
                 { id: 5, text: 'Hindi' },
-                { id: 6, text: 'Francés' }
+                { id: 6, text: 'French' }
             ],
             correctOptionId: 3
         },
         {
-            question: '¿Cuál es el animal más grande del mundo?',
+            question: 'What is the largest animal in the world?',
             options: [
-                { id: 1, text: 'Elefante' },
-                { id: 2, text: 'Ballena azul' },
-                { id: 3, text: 'Jirafa' },
-                { id: 4, text: 'Tiburón blanco' },
-                { id: 5, text: 'Oso polar' },
-                { id: 6, text: 'Cocodrilo' }
+                { id: 1, text: 'Elephant' },
+                { id: 2, text: 'Blue whale' },
+                { id: 3, text: 'Giraffe' },
+                { id: 4, text: 'Great white shark' },
+                { id: 5, text: 'Polar bear' },
+                { id: 6, text: 'Crocodile' }
             ],
             correctOptionId: 2
         },
         {
-            question: '¿Cuál es el metal más caro del mundo?',
+            question: 'What is the most expensive metal in the world?',
             options: [
-                { id: 1, text: 'Oro' },
-                { id: 2, text: 'Platino' },
-                { id: 3, text: 'Rodio' },
-                { id: 4, text: 'Paladio' },
-                { id: 5, text: 'Plata' },
-                { id: 6, text: 'Cobre' }
+                { id: 1, text: 'Gold' },
+                { id: 2, text: 'Platinum' },
+                { id: 3, text: 'Rhodium' },
+                { id: 4, text: 'Palladium' },
+                { id: 5, text: 'Silver' },
+                { id: 6, text: 'Copper' }
             ],
             correctOptionId: 3
         }
