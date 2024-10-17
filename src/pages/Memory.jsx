@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
+import { GameContext } from '../context/contextGame';
 
 const Memory = () => {
     const navigate = useNavigate();
+    const { game } = useContext(GameContext);
     const [screens, setScreens] = useState([
         { id: 1, active: false },
         { id: 2, active: false },
@@ -17,8 +19,8 @@ const Memory = () => {
     const [userSequence, setUserSequence] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [message, setMessage] = useState('Press "Start Game!" to begin the game');
-    const [difficulty, setDifficulty] = useState(700);
     const [score, setScore] = useState(0);
+    game.difficulty = 0.7;
 
     useEffect(() => {
         if (isPlaying && userSequence.length === sequence.length) {
@@ -52,13 +54,13 @@ const Memory = () => {
                 activateScreen(id);
                 setTimeout(() => {
                     deactivateScreen(id);
-                }, difficulty);
-            }, index * (difficulty + 300));
+                }, game.difficulty * 1000);
+            }, index * (game.difficulty * 1000 + 300));
         });
         setTimeout(() => {
             setMessage('Repeat the sequence');
             setIsPlaying(true);
-        }, sequence.length * (difficulty + 300));
+        }, sequence.length * (game.difficulty * 1000 + 300));
     };
 
     const activateScreen = (id) => {
@@ -107,9 +109,6 @@ const Memory = () => {
         }
     };
 
-    const handleDifficultyChange = (newDifficulty) => {
-        setDifficulty(newDifficulty);
-    };
 
     return (
         <div style={{ 
@@ -127,7 +126,6 @@ const Memory = () => {
             <Header 
                 title="Memory Game" 
                 onStart={startGame} 
-                onDifficultyChange={handleDifficultyChange} 
             />
             <p>{message}</p>
             
