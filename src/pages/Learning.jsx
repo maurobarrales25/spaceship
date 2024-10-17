@@ -18,6 +18,7 @@ const Learning = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [difficulty, setDifficulty] = useState('easy'); 
+    const [score, setScore] = useState(0); // Estado para manejar el puntaje
 
     const preguntas = preguntasRespuestas[difficulty];
 
@@ -31,6 +32,7 @@ const Learning = () => {
             if (id === correctOptionId) {
                 setFeedbackMessage('¡Correct!');
                 updateScreenColor(id, "green");
+                setScore(prevScore => prevScore + 1); // Aumentar el puntaje si es correcto
             } else {
                 setFeedbackMessage('Incorrect, try again.');
                 updateScreenColor(id, "red");
@@ -51,7 +53,6 @@ const Learning = () => {
             }))
         );
     };
-    
 
     const nextQuestion = () => {
         if (currentQuestion + 1 < preguntas.length) {
@@ -69,18 +70,23 @@ const Learning = () => {
         setDifficulty(level);
         setCurrentQuestion(0);
         setFeedbackMessage('');
+        setScore(0); // Reiniciar el puntaje al cambiar la dificultad
         setScreens(screens.map(screen => ({ ...screen, active: false, color: "grey" })));
     };
 
     const getButtonStyle = (level) => {
         return {
             margin: '5px',
-            backgroundColor: difficulty === level ? '#4caf50' : '#f0f0f0',
+            backgroundColor: difficulty === level ? 'rgba(75, 142, 214, 0.7)' : 'rgba(194, 216, 240)',
             color: difficulty === level ? 'white' : 'black',
             border: difficulty === level ? '2px solid #4caf50' : '2px solid #ccc',
             padding: '10px 20px',
             borderRadius: '5px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            fontFamily: "sans-serif", 
+            fontWeight: "550", 
+            border:"0", 
+            borderRadius:"20px"
         };
     };
 
@@ -93,9 +99,10 @@ const Learning = () => {
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center', 
+            backgroundAttachment: 'fixed', // Prevenir zoom en la imagen de fondo
             minHeight: '100vh',
             color: "white",
-            overflow: 'hidden'
+            overflow: 'hidden' // Para evitar que haya scroll inesperado o desbordamiento
         }}>
             <button 
                 style={{
@@ -104,32 +111,38 @@ const Learning = () => {
                     left: '10px',
                     padding: '10px 20px',
                     fontSize: '16px',
-                    backgroundColor: '#FF5733',
+                    backgroundColor: '#8c8c8c',
                     color: 'white',
                     border: 'none',
                     borderRadius: '5px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    borderBottom: "3px solid #6b6b6b",
+                    borderLeft: "3px solid #6b6b6b"
                 }}
                 onClick={() => navigate('/')}
             >
                 Return Home
             </button>
 
-            <h1>Select Difficulty:</h1>
+            <h4 style={{fontWeight: "100"}}>Select Difficulty:</h4>
             <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Easy</button>
             <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medium</button>
             <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Hard</button>
-    
-            <h1 style={{ marginTop: '2rem' }}>Question:</h1>
-            <h2>{preguntas[currentQuestion].question}</h2>
+
+            <h2 style={{ marginTop: "2rem", marginBottom:"0", fontStyle: 'italic'}}>Question:</h2>
+            <h1>{preguntas[currentQuestion].question}</h1>
+
             <Mesh 
                 screens={screens} 
                 onScreenClick={handleOptionClick} 
                 mode="learning"
                 options={preguntas[currentQuestion].options}
             />
-    
-            <p style={{ marginTop: '2rem' }}>{feedbackMessage}</p>
+
+            {/* Mostrar el mensaje debajo de la pregunta */}
+            <p style={{ marginTop: "0rem", marginBottom: "0", fontSize: "1.2rem", fontWeight: "550"}}>{feedbackMessage}</p> 
+            {/* Mostrar el puntaje */}
+            <p style={{marginTop: "0"}}>Score: {score}</p>
         </div>
     );
 };

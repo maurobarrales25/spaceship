@@ -32,7 +32,7 @@ const Home = () => {
                 <img src="./image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
             </div>
             <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
-            <p style={{ color: "white"}}>Pick your Game Mode</p>
+            <p style={{ color: "white", fontSize: "600"}}>Pick your Game Mode</p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"  }}>
                 <button
                     onClick={handleStartReflexGame}
@@ -40,11 +40,12 @@ const Home = () => {
                         padding: "10px 20px",
                         fontSize: "18px",
                         cursor: "pointer",
-                        backgroundColor: "#4CAF50",
+                        backgroundColor: "#7cd6bb",
                         color: "white",
                         border: "none",
                         borderRadius: "5px",
-                        // borderBottom: "1px solid #dee2e6"
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d"
                     }}
                 >
                     Play Reflex Mode
@@ -56,10 +57,12 @@ const Home = () => {
                         padding: "10px 20px",
                         fontSize: "18px",
                         cursor: "pointer",
-                        backgroundColor: "#4CAF50",
+                        backgroundColor: "#7cd6bb",
                         color: "white",
                         border: "none",
                         borderRadius: "5px",
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d"
                     }}
                 >
                     Play Memory Mode
@@ -71,10 +74,12 @@ const Home = () => {
                         padding: "10px 20px",
                         fontSize: "18px",
                         cursor: "pointer",
-                        backgroundColor: "#4CAF50",
+                        backgroundColor: "#7cd6bb",
                         color: "white",
                         border: "none",
                         borderRadius: "5px",
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d"
                     }}
                 >
                     Play Learning Mode

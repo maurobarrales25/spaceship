@@ -143,11 +143,13 @@ const Memory = () => {
                     left: '10px',
                     padding: '10px 20px',
                     fontSize: '16px',
-                    backgroundColor: '#FF5733',
+                    backgroundColor: '#8c8c8c',
                     color: 'white',
                     border: 'none',
                     borderRadius: '5px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    borderBottom: "3px solid #6b6b6b",
+                    borderLeft: "3px solid #6b6b6b"
                 }}
                 onClick={() => navigate('/')}
             >
