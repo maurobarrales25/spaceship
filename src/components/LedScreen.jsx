@@ -13,7 +13,7 @@ const LedScreen = ({ id, isActive, onClick, mode, color, optionText, isClickable
                     justifyContent: "center",
                     alignItems: "center",
                     cursor: "pointer",
-                    border: isActive ? "3px solid #4CAF50" : "3px solid grey", 
+                    border: `3px solid ${isActive ? color : "grey"}`, 
                     borderRadius: "10px", 
                     fontSize: "18px", 
                     color: isActive ? "white" : "black", 

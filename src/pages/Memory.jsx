@@ -123,6 +123,26 @@ const Memory = () => {
             height: "100vh", 
             color: "white", 
         }}>
+            
+            {/* Botón para volver al inicio */}
+            <button 
+                style={{
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px',
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    backgroundColor: '#FF5733',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                }}
+                onClick={() => navigate('/')}
+            >
+                Volver a Inicio
+            </button>
+
             <Header 
                 title="Memory Game" 
                 onStart={startGame} 

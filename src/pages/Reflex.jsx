@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import Mesh from "../components/Mesh";
 import Header from "../components/Header";
 import { GameContext } from "../context/contextGame";
 
 
 const Reflex = () => {
+    const navigate = useNavigate();
     const { game } = useContext(GameContext);
-
 
     const [screens, setScreens] = useState(
         Array.from({ length: 6 }, (_, index) => ({
@@ -99,6 +100,26 @@ const Reflex = () => {
             height: "100vh", 
             color: "white", 
         }}>
+
+            {/* Botón para volver al inicio */}
+            <button 
+                style={{
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px',
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    backgroundColor: '#FF5733',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                }}
+                onClick={() => navigate('/')}
+            >
+                Volver a Inicio
+            </button>
+
             <div >
                 <Header
                     title={`Reflex Mode ${game.mode}`} 
