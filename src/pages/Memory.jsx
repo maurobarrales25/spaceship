@@ -81,8 +81,20 @@ const Memory = () => {
 
     const handleScreenClick = (id) => {
         if (isPlaying) {
-            setUserSequence([...userSequence, id]);
+            const updatedUserSequence = [...userSequence, id];
+            setUserSequence(updatedUserSequence);
             activateScreen(id);
+
+            const currentIndex = updatedUserSequence.length - 1;
+            if (sequence[currentIndex] !== id) {
+                setMessage('Incorrecto. Presiona "Start Game!" para intentarlo de nuevo');
+                setScreens((prevScreens) =>
+                    prevScreens.map((screen) => ({ ...screen, active: false }))
+                );
+                setIsPlaying(false);
+                return;
+            }
+
             setTimeout(() => {
                 deactivateScreen(id);
             }, 500);
@@ -123,8 +135,7 @@ const Memory = () => {
             height: "100vh", 
             color: "white", 
         }}>
-            
-            {/* Botón para volver al inicio */}
+            {/* Botón para volver al inicio  */}
             <button 
                 style={{
                     position: 'absolute',
