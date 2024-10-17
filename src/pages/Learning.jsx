@@ -19,7 +19,6 @@ const Learning = () => {
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [difficulty, setDifficulty] = useState('easy'); 
 
-    // Usa preguntasRespuestas en lugar de questions
     const preguntas = preguntasRespuestas[difficulty];
 
     const handleOptionClick = (id) => {
@@ -27,6 +26,8 @@ const Learning = () => {
             const correctOptionId = preguntas[currentQuestion].correctOptionId;
             setSelectedOption(id);
 
+            setScreens(screens.map(screen => ({ ...screen, color: "grey" })));
+            
             if (id === correctOptionId) {
                 setFeedbackMessage('¡Correcto!');
                 updateScreenColor(id, "green");
@@ -42,11 +43,13 @@ const Learning = () => {
     };
 
     const updateScreenColor = (id, color) => {
-        setScreens(screens.map(screen => ({
-            ...screen,
-            isActive: screen.id === id ? true : screen.isActive,
-            color: screen.id === id ? color : screen.color 
-        })));
+        setScreens(prevScreens =>
+            prevScreens.map(screen => ({
+                ...screen,
+                active: screen.id === id ? true : screen.active,
+                color: screen.id === id ? color : screen.color 
+            }))
+        );
     };
     
 

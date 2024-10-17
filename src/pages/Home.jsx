@@ -29,9 +29,9 @@ const Home = () => {
             height: "100vh", 
             }}>
             <div>
-                <img src="./image.png" alt="" style={{borderRadius: "50px"}}/>
+                <img src="./image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
             </div>
-            <h1 style={{ color: "white", margin: "0" }}>Welcome to Gaming Beyond Earth!</h1>
+            <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
             <p style={{ color: "white"}}>Pick your Game Mode</p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"  }}>
                 <button
@@ -44,6 +44,7 @@ const Home = () => {
                         color: "white",
                         border: "none",
                         borderRadius: "5px",
+                        // borderBottom: "1px solid #dee2e6"
                     }}
                 >
                     Play Reflex Mode
