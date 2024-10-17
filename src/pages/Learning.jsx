@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LearningMesh from '../components/LearningMesh';
+import Mesh from '../components/Mesh';
 
 const Learning = () => {
     const [screens, setScreens] = useState([
@@ -181,9 +181,10 @@ const Learning = () => {
                 <h1>Pregunta:</h1>
                 <h2>{questions[difficulty][currentQuestion].question}</h2>
             </div>
-            <LearningMesh 
+            <Mesh 
                 screens={screens} 
                 onScreenClick={handleOptionClick} 
+                mode="learning"
                 options={questions[difficulty][currentQuestion].options}
             />
             <div style={{ textAlign: 'center', marginTop: '2rem' }}>

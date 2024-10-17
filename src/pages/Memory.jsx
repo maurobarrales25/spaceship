@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MemoryMesh from '../components/MemoryMesh';
+import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 
 const Memory = () => {
@@ -118,7 +118,7 @@ const Memory = () => {
             />
             <p>{message}</p>
             
-            <MemoryMesh screens={screens} onScreenClick={handleScreenClick} isClickable={isPlaying} />
+            <Mesh screens={screens} onScreenClick={handleScreenClick} mode="memory" isClickable={isPlaying} />
             <p>Score: {score}</p>
         </div>
     );
