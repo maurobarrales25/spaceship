@@ -169,27 +169,33 @@ const Learning = () => {
     };
 
     return (
-        <div>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <h1>Selecciona la dificultad:</h1>
-                <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Fácil</button>
-                <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medio</button>
-                <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Difícil</button>
-            </div>
-            
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <h1>Pregunta:</h1>
-                <h2>{questions[difficulty][currentQuestion].question}</h2>
-            </div>
+        <div style={{ 
+            textAlign: 'center', 
+            margin: '0', 
+            padding: '0', 
+            backgroundImage: 'url("/starr.jpg")',
+            backgroundSize: 'cover', 
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center', 
+            minHeight: '100vh',
+            color: "white",
+            overflow: 'hidden'
+        }}>
+            <h1>Selecciona la dificultad:</h1>
+            <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Fácil</button>
+            <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medio</button>
+            <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Difícil</button>
+    
+            <h1 style={{ marginTop: '2rem' }}>Pregunta:</h1>
+            <h2>{questions[difficulty][currentQuestion].question}</h2>
             <Mesh 
                 screens={screens} 
                 onScreenClick={handleOptionClick} 
                 mode="learning"
                 options={questions[difficulty][currentQuestion].options}
             />
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                <p>{feedbackMessage}</p>
-            </div>
+    
+            <p style={{ marginTop: '2rem' }}>{feedbackMessage}</p>
         </div>
     );
 };

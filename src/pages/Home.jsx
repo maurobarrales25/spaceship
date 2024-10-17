@@ -17,10 +17,20 @@ const Home = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "10px" }}>
-            <h1>Welcome to Gaming Beyond Earth!</h1>
-            <p>Pick your Game Mode</p>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+        <div style={{ 
+            display: "flex", 
+            flexDirection: "column",
+            justifyContent: "center", 
+            textAlign: "center", 
+            marginTop: "0px", 
+            backgroundImage: 'url("homeimg.jpg")', 
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "100vh", 
+            }}>
+            <h1 style={{ color: "white", margin: "0" }}>Welcome to Gaming Beyond Earth!</h1>
+            <p style={{ color: "white"}}>Pick your Game Mode</p>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"  }}>
                 <button
                     onClick={handleStartReflexGame}
                     style={{

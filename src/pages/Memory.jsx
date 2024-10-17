@@ -110,7 +110,18 @@ const Memory = () => {
     };
 
     return (
-        <div style={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", textAlign: "center",  }}>
+        <div style={{ 
+            display:"flex", 
+            flexDirection:"column", 
+            justifyContent:"center", 
+            alignItems:"center", 
+            textAlign: "center", 
+            backgroundImage: 'url("/starr.jpg")',
+            backgroundSize: "cover", 
+            backgroundPosition: "center",
+            height: "100vh", 
+            color: "white", 
+        }}>
             <Header 
                 title="Memory Game" 
                 onStart={startGame} 
