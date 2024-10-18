@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Home = () => {
     const navigate = useNavigate();
-    const { logout } = useAuth0(); // Añadir Auth0 hook para cerrar sesión
+    const { user, isAuthenticated, logout } = useAuth0();
 
     const handleStartReflexGame = () => {
         navigate("/reflex"); 
@@ -29,7 +29,21 @@ const Home = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh", 
-            }}>
+            position: "relative" // Para posicionar elementos como el nombre y el botón de logout
+        }}>
+            {/* Mostrar el nombre del usuario en la esquina superior izquierda */}
+            {isAuthenticated && (
+                <div style={{
+                    position: "absolute", 
+                    top: "10px", 
+                    left: "10px", 
+                    color: "white", 
+                    fontSize: "16px"
+                }}>
+                    Welcome, {user.name}
+                </div>
+            )}
+
             {/* Botón de Logout en la esquina superior derecha */}
             <button
                 style={{

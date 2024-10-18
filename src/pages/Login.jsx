@@ -21,8 +21,8 @@ const Login = () => {
                 borderRadius: "10px", 
                 textAlign: "center"
             }}>
-                <h1 style={{ color: "white" }}>Iniciar sesión</h1>
-                <p style={{ color: "white", marginBottom: "20px" }}>Accede a tu cuenta para jugar</p>
+                <h1 style={{ color: "white" }}>Login:</h1>
+                <p style={{ color: "white", marginBottom: "20px" }}>Access your account to play</p>
                 <button
                     onClick={() => loginWithRedirect()}
                     style={{
@@ -37,7 +37,7 @@ const Login = () => {
                         borderLeft: "3px solid #5a8c7d",
                     }}
                 >
-                    Iniciar sesión
+                    Login
                 </button>
             </div>
         </div>
