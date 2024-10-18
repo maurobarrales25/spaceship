@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Home = () => {
     const navigate = useNavigate();
-    const { user, isAuthenticated, logout } = useAuth0();
+    const { user, isAuthenticated, logout } = useAuth0(); // Obtener la información del usuario
 
     const handleStartReflexGame = () => {
         navigate("/reflex"); 
@@ -16,6 +16,10 @@ const Home = () => {
 
     const handleStartLearningGame = () => {
         navigate("/Learning"); 
+    };
+
+    const goToProfile = () => {
+        navigate("/profile");
     };
 
     return (
@@ -31,17 +35,27 @@ const Home = () => {
             height: "100vh", 
             position: "relative" // Para posicionar elementos como el nombre y el botón de logout
         }}>
-            {/* Mostrar el nombre del usuario en la esquina superior izquierda */}
+            {/* Hacer el nombre del usuario un botón que redirige a Profile */}
             {isAuthenticated && (
-                <div style={{
-                    position: "absolute", 
-                    top: "10px", 
-                    left: "10px", 
-                    color: "white", 
-                    fontSize: "16px"
-                }}>
-                    Welcome, {user.name}
-                </div>
+                <button
+                    style={{
+                        position: "absolute", 
+                        top: "10px", 
+                        left: "10px", 
+                        padding: "10px 20px",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        backgroundColor: "#7cd6bb",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d",
+                    }}
+                    onClick={goToProfile}
+                >
+                    {user.name}
+                </button>
             )}
 
             {/* Botón de Logout en la esquina superior derecha */}

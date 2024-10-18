@@ -99,10 +99,10 @@ const Learning = () => {
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center', 
-            backgroundAttachment: 'fixed', // Prevenir zoom en la imagen de fondo
+            backgroundAttachment: 'fixed', 
             minHeight: '100vh',
             color: "white",
-            overflow: 'hidden' // Para evitar que haya scroll inesperado o desbordamiento
+            overflow: 'hidden' 
         }}>
             <button 
                 style={{
