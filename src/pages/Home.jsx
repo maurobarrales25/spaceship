@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Home = () => {
     const navigate = useNavigate();
+    const { logout } = useAuth0(); // Añadir Auth0 hook para cerrar sesión
 
     const handleStartReflexGame = () => {
         navigate("/reflex"); 
@@ -28,6 +30,25 @@ const Home = () => {
             backgroundPosition: "center",
             height: "100vh", 
             }}>
+            {/* Botón de Logout en la esquina superior derecha */}
+            <button
+                style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    backgroundColor: "#ff4b5c",
+                    color: "white",
+                    border: "none",
+                    padding: "10px 20px",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    fontSize: "14px"
+                }}
+                onClick={() => logout({ returnTo: window.location.origin })}
+            >
+                Cerrar sesión
+            </button>
+
             <div>
                 <img src="./image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
             </div>
