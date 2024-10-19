@@ -18,6 +18,10 @@ const Home = () => {
         navigate("/Learning"); 
     };
 
+    const handleStartMusicalGame = () => {
+        navigate("/Musical"); 
+    };
+
     const goToProfile = () => {
         navigate("/profile");
     };
@@ -41,7 +45,7 @@ const Home = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh", 
-            position: "relative" // Para posicionar elementos como el nombre y el botón de logout
+            position: "relative"
         }}>
             {/* Hacer el nombre del usuario un botón que redirige a Profile */}
             {isAuthenticated && (
@@ -140,6 +144,23 @@ const Home = () => {
                     }}
                 >
                     Play Learning Mode
+                </button>
+
+                <button
+                    onClick={handleStartMusicalGame}
+                    style={{
+                        padding: "10px 20px",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        backgroundColor: "#7cd6bb",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d"
+                    }}
+                >
+                    Play Musical Mode
                 </button>
 
                 <button

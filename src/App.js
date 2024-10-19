@@ -7,10 +7,12 @@ import Learning from "./pages/Learning";
 import Login from "./pages/Login"; 
 import Profile from "./pages/Profile";
 import Ranking from "./pages/Ranking"; 
+import GameDesc from "./pages/GameDesc";
+import Musical from "./pages/Musical";
 import './App.css';
 import GameProvider from "./context/contextGame";
 import { useAuth0 } from "@auth0/auth0-react";
-import GameDesc from "./pages/GameDesc";
+
 
 const App = () => {
   const { isAuthenticated } = useAuth0();
@@ -33,6 +35,7 @@ const App = () => {
           <Route path="/reflex" element={<Reflex />} />
           <Route path="/memory" element={<Memory />} />
           <Route path="/learning" element={<Learning />} />
+          <Route path="/musical" element={<Musical />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/gamedesc" element={<GameDesc />} />
