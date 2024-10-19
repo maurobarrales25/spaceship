@@ -10,6 +10,7 @@ import Ranking from "./pages/Ranking";
 import './App.css';
 import GameProvider from "./context/contextGame";
 import { useAuth0 } from "@auth0/auth0-react";
+import GameDesc from "./pages/GameDesc";
 
 const App = () => {
   const { isAuthenticated } = useAuth0();
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/learning" element={<Learning />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/ranking" element={<Ranking />} />
+          <Route path="/gamedesc" element={<GameDesc />} />
         </Routes>
       </Router>
     </GameProvider>

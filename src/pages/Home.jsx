@@ -26,6 +26,10 @@ const Home = () => {
         navigate("/Ranking");
     };
 
+    const goToGameDesc = () => {
+        navigate("/GameDesc");
+    };
+
     return (
         <div style={{ 
             display: "flex", 
@@ -153,6 +157,23 @@ const Home = () => {
                     }}
                 >
                     Ranking
+                </button>
+
+                <button
+                    onClick={goToGameDesc}
+                    style={{
+                        padding: "10px 20px",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        backgroundColor: "#7cd6bb",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d"
+                    }}
+                >
+                    Game Descriptions
                 </button>
             </div>
         </div>
