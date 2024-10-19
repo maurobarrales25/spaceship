@@ -50,13 +50,19 @@ const Profile = () => {
                 color: "white"
             }}>
                 <h1>Perfil de {user.name}</h1>
-                <p>Mejores tiempos y puntajes:</p>
+                <p style={{fontWeight:"600", fontStyle:"italic"}}>Records and Games Played:</p>
                 <ul style={{ listStyleType: "none", padding: 0 }}>
-                    <li>Tiempo en Reflex:</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Reflex</li>
+                    <li>Best Time:</li>
+                    <li>Games Played:</li>
                     <hr />
-                    <li>Puntaje en Memory:</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Memory</li>
+                    <li>Best Score:</li>
+                    <li>Games Played:</li>
                     <hr />
-                    <li>Puntaje en Learning:</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Learning</li>
+                    <li>Best Score:</li>
+                    <li>Games Played:</li>
                 </ul>
             </div>
         </div>

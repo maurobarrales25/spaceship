@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Ranking = () => {
-    const { user } = useAuth0();
     const navigate = useNavigate();
 
     const handleGoBack = () => {
@@ -50,7 +49,7 @@ const Ranking = () => {
                 color: "white"
             }}>
                 <h1>Rankings</h1>
-                <p>Best times and scores:</p>
+                <p>Time and Score Records:</p>
                 <ul style={{ listStyleType: "none", padding: 0 }}>
                     <li>Reflex:</li>
                     <hr />
