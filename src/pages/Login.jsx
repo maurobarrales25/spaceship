@@ -28,6 +28,7 @@ const Login = () => {
                     style={{
                         padding: "10px 20px",
                         fontSize: "18px",
+                        fontFamily: "system-ui",
                         cursor: "pointer",
                         backgroundColor: "#7cd6bb",
                         color: "white",

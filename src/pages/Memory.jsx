@@ -139,7 +139,7 @@ const Memory = () => {
             <button 
                 style={{
                     position: 'absolute',
-                    top: '10px',
+                    top: '25px',
                     left: '10px',
                     padding: '10px 20px',
                     fontSize: '16px',
