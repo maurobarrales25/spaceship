@@ -41,7 +41,7 @@ const Home = () => {
             justifyContent: "center", 
             textAlign: "center", 
             marginTop: "0px", 
-            backgroundImage: 'url("homeimg.jpg")', 
+            backgroundImage: 'url("/Photos/homeimg.jpg")', 
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh", 
@@ -90,7 +90,7 @@ const Home = () => {
             </button>
 
             <div>
-                <img src="./image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
+                <img src="./Photos/image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
             </div>
             <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
             <p style={{ color: "white", fontSize: "600"}}>Pick your Game Mode</p>

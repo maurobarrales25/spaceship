@@ -94,7 +94,7 @@ const Reflex = () => {
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
-            backgroundImage: 'url("/starr.jpg")',
+            backgroundImage: 'url("/Photos/starr.jpg")',
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
             backgroundPosition: "center",

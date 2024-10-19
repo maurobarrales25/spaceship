@@ -50,8 +50,7 @@ const Header = ({ title, onStart }) => {
             <div>
                 <label>Select Difficulty: </label>
                 <select onChange={handleDifficultyChange}
-                style={{backgroundColor: "rgba(151, 191, 209, 0.6)", color: "white", fontFamily: "sans-serif", fontWeight: "550", border:"0", borderRadius:"20px"}}
-                >
+                style={{backgroundColor: "rgba(151, 191, 209, 0.6)", color: "white", fontFamily: "sans-serif", fontWeight: "550", border:"0", borderRadius:"20px"}}>
                     <option value="easy">Easy (0.7 seconds)</option>
                     <option value="medium">Medium (0.5 seconds)</option>
                     <option value="hard">Hard (0.3 seconds)</option>

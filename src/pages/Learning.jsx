@@ -95,7 +95,7 @@ const Learning = () => {
             textAlign: 'center', 
             margin: '0', 
             padding: '0', 
-            backgroundImage: 'url("/starr.jpg")',
+            backgroundImage: 'url("/Photos/starr.jpg")',
             backgroundSize: 'cover', 
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center', 

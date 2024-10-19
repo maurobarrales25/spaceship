@@ -11,7 +11,7 @@ const Login = () => {
             justifyContent: "center", 
             alignItems: "center", 
             height: "100vh", 
-            backgroundImage: 'url("homeimg.jpg")', 
+            backgroundImage: 'url("/Photos/homeimg.jpg")', 
             backgroundSize: "cover", 
             backgroundPosition: "center",
         }}>

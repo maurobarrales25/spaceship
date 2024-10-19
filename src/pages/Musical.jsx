@@ -28,9 +28,9 @@ const Musical = () => {
     const pauseTimeoutRef = useRef(null); 
 
     const songs = {
-        easy: "/Sam Smith - I'm Not The Only One (Lyrics).mp3",
-        normal: "/Britney Spears - Baby One More Time (Lyrics).mp3",
-        hard: "/Goodies.mp3"
+        easy: "/Sounds/Sam Smith - I'm Not The Only One (Lyrics).mp3",
+        normal: "/Sounds/Britney Spears - Baby One More Time (Lyrics).mp3",
+        hard: "/Sounds/Goodies.mp3"
     };
 
     const difficultyDurations = {
@@ -181,7 +181,7 @@ const Musical = () => {
             justifyContent: "center", 
             alignItems: "center", 
             textAlign: "center", 
-            backgroundImage: 'url("/starr.jpg")',
+            backgroundImage: 'url("/Photos/starr.jpg")',
             backgroundSize: "cover", 
             backgroundPosition: "center",
             height: "100vh", 

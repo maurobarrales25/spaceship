@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const Ranking = () => {
     const navigate = useNavigate();
@@ -16,7 +15,7 @@ const Ranking = () => {
             justifyContent: "center", 
             alignItems: "center", 
             height: "100vh", 
-            backgroundImage: 'url("homeimg.jpg")', 
+            backgroundImage: 'url("/Photos/homeimg.jpg")', 
             backgroundSize: "cover", 
             backgroundPosition: "center",
             position: "relative" 
