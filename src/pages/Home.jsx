@@ -22,6 +22,10 @@ const Home = () => {
         navigate("/profile");
     };
 
+    const goToRanking = () => {
+        navigate("/Ranking");
+    };
+
     return (
         <div style={{ 
             display: "flex", 
@@ -132,6 +136,23 @@ const Home = () => {
                     }}
                 >
                     Play Learning Mode
+                </button>
+
+                <button
+                    onClick={goToRanking}
+                    style={{
+                        padding: "10px 60px",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        backgroundColor: "#7cd6bb",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        borderBottom: "3px solid #5a8c7d",
+                        borderLeft: "3px solid #5a8c7d"
+                    }}
+                >
+                    Ranking
                 </button>
             </div>
         </div>

@@ -5,7 +5,8 @@ import Reflex from "./pages/Reflex";
 import Memory from "./pages/Memory";
 import Learning from "./pages/Learning";
 import Login from "./pages/Login"; 
-import Profile from "./pages/Profile"; 
+import Profile from "./pages/Profile";
+import Ranking from "./pages/Ranking"; 
 import './App.css';
 import GameProvider from "./context/contextGame";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/memory" element={<Memory />} />
           <Route path="/learning" element={<Learning />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/ranking" element={<Ranking />} />
         </Routes>
       </Router>
     </GameProvider>
