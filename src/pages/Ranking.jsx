@@ -56,6 +56,8 @@ const Ranking = () => {
                     <li>Memory:</li>
                     <hr />
                     <li>Learning:</li>
+                    <hr />
+                    <li>Musical:</li>
                 </ul>
             </div>
         </div>

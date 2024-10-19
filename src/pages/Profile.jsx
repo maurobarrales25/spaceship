@@ -63,6 +63,10 @@ const Profile = () => {
                     <li style={{fontWeight:"500", textDecoration:"underline"}}>Learning</li>
                     <li>Best Score:</li>
                     <li>Games Played:</li>
+                    <hr />
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Musical</li>
+                    <li>Best Score:</li>
+                    <li>Games Played:</li>
                 </ul>
             </div>
         </div>
