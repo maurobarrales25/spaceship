@@ -6,21 +6,71 @@ import { GameContext } from '../context/contextGame';
 
 const Extreme = () => {
     const navigate= useNavigate();
-    const [screens, setScreens] = useState([
-        { id: 1, active: false },
-        { id: 2, active: false },
-        { id: 3, active: false },
-        { id: 4, active: false },
-        { id: 5, active: false },
-        { id: 6, active: false },
-    ]);
+    const [leds, setLeds] = useState(
+        Array.from({ length: 6 }, (_, index) => ({
+            id: index + 1,
+            active: false,
+        }))
+    );
 
-    const [sequence, setSequence] = useState([]);
-    const [userSequence, setUserSequence] = useState([]);
-    //const [timer, setTimer] = useState(0); 
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [score, setScore] = useState(0);
-    
+    const [gameStarted, setGameStarted] = useState(false);
+    const [timer, setTimer] = useState(5); 
+    const [sequenceLength, setSequenceLength] = useState(3);
+    const [activeLeds, setActiveLeds] = useState([]); 
+    const [selectedLeds, setSelectedLeds] = useState([]);
+    //const [score, setScore] = useState(0);
+
+    const StartGame = () => {
+        setGameStarted(true);
+        setTimer(5);
+        setSequenceLength(3);
+        setSelectedLeds([]);
+        activateRandomLeds(3);
+    };
+
+    useEffect(() => {
+        let interval;
+        if (gameStarted && timer >0) {
+            interval= setInterval(() =>{
+                setTimer((prevTimer) => prevTimer-1);
+            },1000);
+        } else if(timer ==0){
+            setGameStarted(false);
+            setActiveLeds([]);
+        }
+        return () => clearInterval(interval);
+    }, [gameStarted,timer]);
+
+    const activateRandomLeds= (length) => {
+        const randomLeds= [];
+        while(randomLeds.length < length){
+            const randomIndex= Math.floor(Math.random() * leds.length);
+            if (!randomLeds.includes(randomIndex)) {
+                randomLeds.push(randomIndex);
+        }
+    }
+    const newLeds = leds.map((led, index) => ({
+        ...led,
+        active: randomLeds.includes(index),
+    }));
+    setLeds(newLeds); // re renderizo el nuevo estado de los leds.
+    setActiveLeds(randomLeds); // guardo leds activos.
+    setStartTime(Date.now()); // reinicio tiempo
+
+    const handleClick= (id) => {
+        if(!gameStarted) return;
+
+        const clickedLed= leds.find((led) => led.id === id);
+
+        if (clickedLed.Active && !selectedLeds.includes(id)) {
+            setSelectedLeds([...selectedLeds,id]);
+        }
+    }
+
+
+
+
+}
 
 
 
@@ -32,7 +82,9 @@ const Extreme = () => {
 
 
 
-    
+
+
+
     return (
         <div style={{
             display: "flex",
