@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
+import { sendScore } from '../services/dataService';
 
 const Memory = () => {
     const navigate = useNavigate();
@@ -114,10 +115,19 @@ const Memory = () => {
             }, 1000);
         } else {
             setMessage('Incorrect. Press "Start Game!" to try again');
+
             setScreens((prevScreens) =>
                 prevScreens.map((screen) => ({ ...screen, active: false }))
             );
             setIsPlaying(false);
+
+            sendScore(score)
+                .then(response => {
+                    console.log('Score sent successfully:', response);
+                })
+                .catch(error => {
+                    console.error('Error sending score:', error);
+                });
         }
     };
 

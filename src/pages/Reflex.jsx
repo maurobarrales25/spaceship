@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Mesh from "../components/Mesh";
 import Header from "../components/Header";
 import { GameContext } from "../context/contextGame";
-
+import { sendScore } from '../services/dataService';
 
 const Reflex = () => {
     const navigate = useNavigate();
@@ -45,6 +45,13 @@ const Reflex = () => {
             clearInterval(interval);
             setGameStarted(false); 
             setCurrentScreen(null); 
+            sendScore(hits)
+                .then(response => {
+                    console.log('Score sent successfully:', response);
+                })
+                .catch(error => {
+                    console.error('Error sending score:', error);
+                });
         }
 
         return () => clearInterval(interval);

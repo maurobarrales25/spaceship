@@ -3,6 +3,7 @@ import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
 import { useNavigate } from 'react-router-dom';
+import { sendScore } from '../services/dataService';
 
 const Musical = () => {
     const navigate = useNavigate();
@@ -44,6 +45,13 @@ const Musical = () => {
     };
 
     const resetGame = () => {
+        sendScore(score)
+            .then(response => {
+                console.log('Score sent successfully:', response);
+            })
+            .catch(error => {
+                console.error('Error sending score:', error);
+            });
         setSequence([]);
         setUserSequence([]);
         setCurrentIndex(0);

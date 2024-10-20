@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import preguntasRespuestas from '../Data/questions'; 
+import { sendScore } from '../services/dataService';
 
 const Learning = () => {
     const navigate = useNavigate(); 
@@ -18,11 +19,37 @@ const Learning = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [difficulty, setDifficulty] = useState('easy'); 
-    const [score, setScore] = useState(0); // Estado para manejar el puntaje
+    const [score, setScore] = useState(0);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const preguntas = preguntasRespuestas[difficulty];
 
+    const submitScore = () => {
+        sendScore(score)
+            .then(response => {
+                console.log('Score sent successfully:', response);
+            })
+            .catch(error => {
+                console.error('Error sending score:', error);
+            });
+    };
+
+    const resetGame = () => {
+        submitScore();
+        setCurrentQuestion(0);
+        setSelectedOption(null);
+        setFeedbackMessage('');
+        setScore(0);
+        setScreens(screens.map(screen => ({ ...screen, color: "grey" })));
+    };
+
     const handleOptionClick = (id) => {
+        if (isDisabled) {
+            return;
+        }
+
+        setIsDisabled(true);
+
         if (currentQuestion < preguntas.length) {
             const correctOptionId = preguntas[currentQuestion].correctOptionId;
             setSelectedOption(id);
@@ -40,6 +67,7 @@ const Learning = () => {
 
             setTimeout(() => {
                 nextQuestion();
+                setIsDisabled(false);
             }, 1000);
         }
     };
@@ -55,18 +83,25 @@ const Learning = () => {
     };
 
     const nextQuestion = () => {
-        if (currentQuestion + 1 < preguntas.length) {
-            setCurrentQuestion(prev => prev + 1);
+        if (currentQuestion + 1< preguntas.length) {
+            setCurrentQuestion(currentQuestion + 1);
+            setSelectedOption(null);
+            setFeedbackMessage('');
         } else {
-            setCurrentQuestion(0);
+            setFeedbackMessage('Game Over');
+            submitScore();
+            setTimeout(() => {
+                resetGame();
+                setIsDisabled(false);
+            }, 1000);
         }
-        setFeedbackMessage('');
-        setSelectedOption(null);
-
         setScreens(screens.map(screen => ({ ...screen, active: false, color: "grey" })));
+        
     };
 
     const changeDifficulty = (level) => {
+        
+        submitScore();
         setDifficulty(level);
         setCurrentQuestion(0);
         setFeedbackMessage('');
