@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
+import { useSpring, animated } from '@react-spring/web';
 
 const Extreme = () => {
     const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
+
     const [screens, setScreens] = useState([
         { id: 1, active: false },
         { id: 2, active: false },
@@ -126,7 +134,7 @@ const Extreme = () => {
 
         const currentIndex = updatedUserSequence.length - 1;
         if (sequence[currentIndex] !== id) {
-            setMessage('Incorrect');
+            setMessage('Incorrect, try again');
             setScreens((prevScreens) =>
                 prevScreens.map((screen) => ({ ...screen, active: false }))
             );
@@ -202,6 +210,26 @@ const Extreme = () => {
                 onClick={() => navigate('/')}>
                 Return Home
             </button>
+
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    zIndex: 10, // para asegurarse de que el overlay este en el nivel superior
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
 
             <button 
                 style={{

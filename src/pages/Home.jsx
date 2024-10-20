@@ -72,7 +72,11 @@ const Home = () => {
     };
 
     const handleStartExtremeGame = () => {
-        navigate("/extreme")
+        setAnimationMessage("Starting Extreme Game...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/extreme");
+        }, 1000); 
     }
 
     return (
