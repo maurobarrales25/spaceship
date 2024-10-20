@@ -158,159 +158,170 @@ const Home = () => {
                 Sign out
             </button>
 
-            <div>
-                <img src="./Photos/image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain " }}/>
-            </div>
-            <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
-            <p style={{ color: "white", fontWeight: "450"}}>Pick your Game Mode</p>
-
-            <div style={{display:"flex", justifyContent:"space-evenly", marginBottom:"20px", marginRight: "500px", marginLeft: "500px"}}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
-                    <button
-                        onClick={handleStartReflexGame}
-                        style={{
-                            padding: "10px 20px",
-                            fontSize: "18px",
-                            cursor: "pointer",
-                            backgroundColor: "#7cd6bb",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            borderBottom: "3px solid #5a8c7d",
-                            borderLeft: "3px solid #5a8c7d"
-                        }}
-                    >
-                        Play Reflex Mode
-                    </button>
-
-                    <button
-                        onClick={handleStartMemoryGame}
-                        style={{
-                            padding: "10px 20px",
-                            fontSize: "18px",
-                            cursor: "pointer",
-                            backgroundColor: "#7cd6bb",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            borderBottom: "3px solid #5a8c7d",
-                            borderLeft: "3px solid #5a8c7d"
-                        }}
-                    >
-                        Play Memory Mode
-                    </button>
+            <div style={{
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                paddingTop: "3rem",
+                paddingBottom: "3rem",
+                marginLeft: "30rem",
+                marginRight: "30rem"
+            }}>
+                <div>
+                    <img src="./Photos/image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain " }}/>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "18px", marginTop: "40px"}}>
-                    <button
-                        onClick={handleStartExtremeGame}
-                        style={{
-                            padding: "10px 20px",
-                            fontSize: "18px",
-                            cursor: "pointer",
-                            backgroundColor: "#7cd6bb",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            borderBottom: "3px solid #5a8c7d",
-                            borderLeft: "3px solid #5a8c7d"  
-                        }}
-                    >
-                        Play Extreme Mode
-                    </button>
+                <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
+                <p style={{ color: "white", fontWeight: "450"}}>Pick your Game Mode</p>
+
+                <div>
+                    <div style={{display:"flex", justifyContent:"space-evenly", marginBottom:"20px"}}>
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
+                            <button
+                                onClick={handleStartReflexGame}
+                                style={{
+                                    padding: "10px 20px",
+                                    fontSize: "18px",
+                                    cursor: "pointer",
+                                    backgroundColor: "#7cd6bb",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    borderBottom: "3px solid #5a8c7d",
+                                    borderLeft: "3px solid #5a8c7d"
+                                }}
+                            >
+                                Play Reflex Mode
+                            </button>
+
+                            <button
+                                onClick={handleStartMemoryGame}
+                                style={{
+                                    padding: "10px 20px",
+                                    fontSize: "18px",
+                                    cursor: "pointer",
+                                    backgroundColor: "#7cd6bb",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    borderBottom: "3px solid #5a8c7d",
+                                    borderLeft: "3px solid #5a8c7d"
+                                }}
+                            >
+                                Play Memory Mode
+                            </button>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "18px", marginTop: "40px"}}>
+                            <button
+                                onClick={handleStartExtremeGame}
+                                style={{
+                                    padding: "10px 20px",
+                                    fontSize: "18px",
+                                    cursor: "pointer",
+                                    backgroundColor: "#7cd6bb",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    borderBottom: "3px solid #5a8c7d",
+                                    borderLeft: "3px solid #5a8c7d"  
+                                }}
+                            >
+                                Play Extreme Mode
+                            </button>
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
+                            <button
+                                onClick={handleStartLearningGame}
+                                style={{
+                                    padding: "10px 20px",
+                                    fontSize: "18px",
+                                    cursor: "pointer",
+                                    backgroundColor: "#7cd6bb",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    borderBottom: "3px solid #5a8c7d",
+                                    borderLeft: "3px solid #5a8c7d"
+                                }}
+                            >
+                                Play Learning Mode
+                            </button>
+
+                            <button
+                                onClick={handleStartMusicalGame}
+                                style={{
+                                    padding: "10px 20px",
+                                    fontSize: "18px",
+                                    cursor: "pointer",
+                                    backgroundColor: "#7cd6bb",
+                                    color: "white",
+                                    border: "none",
+                                    borderRadius: "5px",
+                                    borderBottom: "3px solid #5a8c7d",
+                                    borderLeft: "3px solid #5a8c7d"
+                                }}
+                            >
+                                Play Musical Mode
+                            </button>
+                        </div>
+                        {isAnimating && (
+                        <animated.div style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)', // Menos transparencia
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            color: 'white',
+                            fontSize: '24px',
+                            zIndex: 10, // Asegúrate de que el overlay esté en el nivel superior
+                            ...animationProps
+                        }}>
+                            {animationMessage}
+                        </animated.div>
+                    )}
+                    </div>
+                    
+
+
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
+        
+                        <button
+                            onClick={goToRanking}
+                            style={{
+                                padding: "10px 60px",
+                                fontSize: "18px",
+                                cursor: "pointer",
+                                backgroundColor: "#7cd6bb",
+                                color: "white",
+                                border: "none",
+                                borderRadius: "5px",
+                                borderBottom: "3px solid #5a8c7d",
+                                borderLeft: "3px solid #5a8c7d"
+                            }}
+                        >
+                            Ranking
+                        </button>
+
+                        <button
+                            onClick={goToGameDesc}
+                            style={{
+                                padding: "10px 20px",
+                                fontSize: "18px",
+                                cursor: "pointer",
+                                backgroundColor: "#7cd6bb",
+                                color: "white",
+                                border: "none",
+                                borderRadius: "5px",
+                                borderBottom: "3px solid #5a8c7d",
+                                borderLeft: "3px solid #5a8c7d"
+                            }}
+                        >
+                            Game Descriptions
+                        </button>
+                    </div> 
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
-                    <button
-                        onClick={handleStartLearningGame}
-                        style={{
-                            padding: "10px 20px",
-                            fontSize: "18px",
-                            cursor: "pointer",
-                            backgroundColor: "#7cd6bb",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            borderBottom: "3px solid #5a8c7d",
-                            borderLeft: "3px solid #5a8c7d"
-                        }}
-                    >
-                        Play Learning Mode
-                    </button>
-
-                    <button
-                        onClick={handleStartMusicalGame}
-                        style={{
-                            padding: "10px 20px",
-                            fontSize: "18px",
-                            cursor: "pointer",
-                            backgroundColor: "#7cd6bb",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px",
-                            borderBottom: "3px solid #5a8c7d",
-                            borderLeft: "3px solid #5a8c7d"
-                        }}
-                    >
-                        Play Musical Mode
-                    </button>
-                </div>
-                {isAnimating && (
-                <animated.div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Menos transparencia
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: 'white',
-                    fontSize: '24px',
-                    zIndex: 10, // Asegúrate de que el overlay esté en el nivel superior
-                    ...animationProps
-                }}>
-                    {animationMessage}
-                </animated.div>
-            )}
-            </div>
-            
-
-
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
-  
-                <button
-                    onClick={goToRanking}
-                    style={{
-                        padding: "10px 60px",
-                        fontSize: "18px",
-                        cursor: "pointer",
-                        backgroundColor: "#7cd6bb",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "5px",
-                        borderBottom: "3px solid #5a8c7d",
-                        borderLeft: "3px solid #5a8c7d"
-                    }}
-                >
-                    Ranking
-                </button>
-
-                <button
-                    onClick={goToGameDesc}
-                    style={{
-                        padding: "10px 20px",
-                        fontSize: "18px",
-                        cursor: "pointer",
-                        backgroundColor: "#7cd6bb",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "5px",
-                        borderBottom: "3px solid #5a8c7d",
-                        borderLeft: "3px solid #5a8c7d"
-                    }}
-                >
-                    Game Descriptions
-                </button>
+                
             </div>
         </div>
     );
