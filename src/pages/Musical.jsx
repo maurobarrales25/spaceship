@@ -5,9 +5,13 @@ import { GameContext } from '../context/contextGame';
 import { useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web'
 import dataService from '../services/dataService';
+import { useUser } from '../context/userContext';
 
-const Musical = ({ username }) => {
 
+const Musical = () => {
+
+    const { username } = useUser();
+    console.log("USERNAME musical: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
 

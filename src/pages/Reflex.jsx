@@ -5,8 +5,12 @@ import Header from "../components/Header";
 import { GameContext } from "../context/contextGame";
 import { useSpring, animated } from '@react-spring/web'
 import dataService from '../services/dataService';
+import { useUser } from '../context/userContext';
 
-const Reflex = ({ username }) => {
+const Reflex = () => {
+
+    const { username } = useUser();
+    console.log("USERNAME reflex: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
 

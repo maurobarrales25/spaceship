@@ -4,8 +4,12 @@ import Mesh from '../components/Mesh';
 import preguntasRespuestas from '../Data/questions'; 
 import { useSpring, animated } from '@react-spring/web';
 import dataService from '../services/dataService';
+import { useUser } from '../context/userContext';
 
-const Learning = ({ username }) => {
+const Learning = () => {
+
+    const { username } = useUser();
+    console.log("USERNAME learning: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
 

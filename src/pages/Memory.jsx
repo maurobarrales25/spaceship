@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
 import { useSpring, animated } from '@react-spring/web';
 import dataService from '../services/dataService';
+import { useUser } from '../context/userContext';
 
-const Memory = ({ username }) => {
-
+const Memory = () => {
+    const { username } = useUser();
+    console.log("USERNAME Memory: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
 
