@@ -47,30 +47,37 @@ const Learning = () => {
         if (isDisabled) {
             return;
         }
-
+    
         setIsDisabled(true);
-
+    
         if (currentQuestion < preguntas.length) {
             const correctOptionId = preguntas[currentQuestion].correctOptionId;
             setSelectedOption(id);
-
+    
             setScreens(screens.map(screen => ({ ...screen, color: "grey" })));
-
+    
             if (id === correctOptionId) {
                 setFeedbackMessage('¡Correct!');
                 updateScreenColor(id, "green");
-                setScore(prevScore => prevScore + 1); // Aumentar el puntaje si es correcto
+                setScore(prevScore => prevScore + 1);
             } else {
-                setFeedbackMessage('Incorrect, try again.');
+                setFeedbackMessage('Incorrect, the correct answer will be highlighted.');
                 updateScreenColor(id, "red");
+    
+                setTimeout(() => {
+                    updateScreenColor(correctOptionId, "grey");
+                }, 800);
             }
-
+    
             setTimeout(() => {
                 nextQuestion();
                 setIsDisabled(false);
-            }, 1000);
+            }, 2500);
         }
     };
+    
+    
+    
 
     const updateScreenColor = (id, color) => {
         setScreens(prevScreens =>
@@ -105,7 +112,7 @@ const Learning = () => {
         setDifficulty(level);
         setCurrentQuestion(0);
         setFeedbackMessage('');
-        setScore(0); // Reiniciar el puntaje al cambiar la dificultad
+        setScore(0);
         setScreens(screens.map(screen => ({ ...screen, active: false, color: "grey" })));
     };
 
@@ -164,8 +171,10 @@ const Learning = () => {
             <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medium</button>
             <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Hard</button>
 
-            <h2 style={{ marginTop: "2rem", marginBottom:"0", fontStyle: 'italic'}}>Question:</h2>
+            <h2 style={{ marginTop: "1rem", marginBottom:"0", fontStyle: 'italic'}}>Question:</h2>
             <h1>{preguntas[currentQuestion].question}</h1>
+            
+            <p style={{ marginTop: "0rem", marginBottom: "0", fontSize: "0.9rem", fontWeight: "400"}}>If you get it wrong, the correct one will show itself.</p> 
 
             <Mesh 
                 screens={screens} 
