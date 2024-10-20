@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import preguntasRespuestas from '../Data/questions'; 
-import { sendScore } from '../services/dataService';
 import { useSpring, animated } from '@react-spring/web';
+import dataService from '../services/dataService';
 
-const Learning = () => {
+const Learning = ({ username }) => {
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -39,14 +39,13 @@ const Learning = () => {
 
     const preguntas = preguntasRespuestas[difficulty];
 
-    const submitScore = () => {
-        sendScore(score)
-            .then(response => {
-                console.log('Score sent successfully:', response);
-            })
-            .catch(error => {
-                console.error('Error sending score:', error);
-            });
+    const submitScore = async () => {
+        try {
+            await dataService.sendScore('learing', score, username);
+            console.log('Score sent successfully');
+        } catch (error) {
+            console.error('Error sending score:', error);
+        }
     };
 
     const resetGame = () => {

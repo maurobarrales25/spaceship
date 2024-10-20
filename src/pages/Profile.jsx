@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSpring, animated } from '@react-spring/web';
+import Reflex from '../pages/Reflex.jsx';
+import Musical from '../pages/Musical.jsx';
+import Memory from '../pages/Memory.jsx';
+import Learning from './Learning.jsx';
+
 
 const Profile = () => {
     const { user } = useAuth0();
@@ -100,6 +105,10 @@ const Profile = () => {
                     <li>Games Played:</li>
                 </ul>
             </div>
+            <Reflex username={user.name} />
+            <Memory username={user.name} />
+            <Learning username={user.name} />
+            <Musical username={user.name} />
         </div>
     );
 };

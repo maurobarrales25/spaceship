@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
-import { sendScore } from '../services/dataService';
 import { useSpring, animated } from '@react-spring/web';
+import dataService from '../services/dataService';
 
-const Memory = () => {
+const Memory = ({ username }) => {
 
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
@@ -38,6 +38,15 @@ const Memory = () => {
     const [message, setMessage] = useState('Press "Start Game!" to begin the game');
     const [score, setScore] = useState(0);
     game.difficulty = 0.7;
+
+    const submitScore = async () => {
+        try {
+            await dataService.sendScore('memory', score, username);
+            console.log('Score sent successfully');
+        } catch (error) {
+            console.error('Error sending score:', error);
+        }
+    };
 
     useEffect(() => {
         if (isPlaying && userSequence.length === sequence.length) {
@@ -137,13 +146,7 @@ const Memory = () => {
             );
             setIsPlaying(false);
 
-            sendScore(score)
-                .then(response => {
-                    console.log('Score sent successfully:', response);
-                })
-                .catch(error => {
-                    console.error('Error sending score:', error);
-                });
+            submitScore(score)
         }
     };
 

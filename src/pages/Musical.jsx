@@ -3,10 +3,10 @@ import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
 import { useNavigate } from 'react-router-dom';
-import { sendScore } from '../services/dataService';
 import { useSpring, animated } from '@react-spring/web'
+import dataService from '../services/dataService';
 
-const Musical = () => {
+const Musical = ({ username }) => {
 
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
@@ -42,7 +42,17 @@ const Musical = () => {
     const audioRef = useRef(null);  
     const [musicStarted, setMusicStarted] = useState(false);
     const [musicPaused, setMusicPaused] = useState(true);  
-    const pauseTimeoutRef = useRef(null); 
+    const pauseTimeoutRef = useRef(null);
+    
+    const submitScore = async () => {
+        try {
+            await dataService.sendScore('learing', score, username);
+            console.log('Score sent successfully');
+        } catch (error) {
+            console.error('Error sending score:', error);
+        }
+    };
+
 
     const songs = {
         easy: "/Sounds/Sam Smith - I'm Not The Only One (Lyrics).mp3",
@@ -61,13 +71,7 @@ const Musical = () => {
     };
 
     const resetGame = () => {
-        sendScore(score)
-            .then(response => {
-                console.log('Score sent successfully:', response);
-            })
-            .catch(error => {
-                console.error('Error sending score:', error);
-            });
+        submitScore()
         setSequence([]);
         setUserSequence([]);
         setCurrentIndex(0);

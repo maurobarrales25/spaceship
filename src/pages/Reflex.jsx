@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Mesh from "../components/Mesh";
 import Header from "../components/Header";
 import { GameContext } from "../context/contextGame";
-import { sendScore } from '../services/dataService';
 import { useSpring, animated } from '@react-spring/web'
+import dataService from '../services/dataService';
 
-const Reflex = () => {
+const Reflex = ({ username }) => {
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -49,6 +49,15 @@ const Reflex = () => {
         activateRandomScreen(); 
     };
 
+    const submitScore = async () => {
+        try {
+            await dataService.sendScore('learing', hits, username);
+            console.log('Score sent successfully');
+        } catch (error) {
+            console.error('Error sending score:', error);
+        }
+    };
+
     useEffect(() => {
         let interval;
         if (gameStarted) {
@@ -61,13 +70,7 @@ const Reflex = () => {
             clearInterval(interval);
             setGameStarted(false); 
             setCurrentScreen(null); 
-            sendScore(hits)
-                .then(response => {
-                    console.log('Score sent successfully:', response);
-                })
-                .catch(error => {
-                    console.error('Error sending score:', error);
-                });
+            submitScore();
         }
 
         return () => clearInterval(interval);

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useSpring, animated } from '@react-spring/web';
+import dataService from '../services/dataService';
 
 
 const Ranking = () => {
@@ -18,6 +20,33 @@ const Ranking = () => {
             navigate("/");
         }, 1000); 
     };
+
+    const [scores, setScores] = useState({
+        reflex: [],
+        memory: [],
+        learning: [],
+        musical: []
+    });
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchScores = async () => {
+            try {
+                const response = await axios.get('URL_DEL_BACKEND/ranking'); // acá va el URL del backend + /ranking
+                setScores(response.data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error fetching scores:', error);
+                setIsLoading(false);
+            }
+        };
+
+        fetchScores();
+    }, []);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div style={{ 
@@ -81,13 +110,33 @@ const Ranking = () => {
                 <h1>Rankings</h1>
                 <p>Time and Score Records:</p>
                 <ul style={{ listStyleType: "none", padding: 0 }}>
-                    <li>Reflex:</li>
+                    <li>Reflex</li>
+                    <ul>
+                        {scores.reflex.map((score, index) => (
+                            <li key={index}>{score.username}: {score.score}</li>
+                        ))}
+                    </ul>
                     <hr />
-                    <li>Memory:</li>
+                    <li>Memory</li>
+                    <ul>
+                        {scores.memory.map((score, index) => (
+                            <li key={index}>{score.username}: {score.score}</li>
+                        ))}
+                    </ul>
                     <hr />
-                    <li>Learning:</li>
+                    <li>Learning</li>
+                    <ul>
+                        {scores.learning.map((score, index) => (
+                            <li key={index}>{score.username}: {score.score}</li>
+                        ))}
+                    </ul>
                     <hr />
-                    <li>Musical:</li>
+                    <li>Musical</li>
+                    <ul>
+                        {scores.musical.map((score, index) => (
+                            <li key={index}>{score.username}: {score.score}</li>
+                        ))}
+                    </ul>
                 </ul>
             </div>
         </div>
