@@ -58,6 +58,20 @@ const LedScreen = ({ id, isActive, onClick, mode, color, optionText, isClickable
                     borderRadius: "50%", 
                     transition: "opacity 0.3s ease, background-color 0.3s ease",
                 };
+                case "extreme":
+                    return {
+                        backgroundColor: isActive ? "red" : "darkgrey",
+                        width: "120px",
+                        height: "120px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: isClickable ? "pointer" : "default", 
+                        opacity: isActive ? 1 : 0.5,
+                        border: "2px solid black",
+                        borderRadius: "50%", 
+                        transition: "box-shadow 0.3s ease, background-color 0.3s ease", 
+                    };
             default:
                 return {};
         }
