@@ -3,9 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import preguntasRespuestas from '../Data/questions'; 
 import { sendScore } from '../services/dataService';
+import { useSpring, animated } from '@react-spring/web';
 
 const Learning = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
+
+    const handleGoBack = () => {
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/");
+        }, 1000); 
+    };
+
     const [screens, setScreens] = useState([
         { id: 1, active: false, color: "grey" },
         { id: 2, active: false, color: "grey" },
@@ -161,10 +176,29 @@ const Learning = () => {
                     borderBottom: "3px solid #6b6b6b",
                     borderLeft: "3px solid #6b6b6b"
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => handleGoBack()}
             >
                 Return Home
             </button>
+            
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
 
             <h4 style={{fontWeight: "100"}}>Select Difficulty:</h4>
             <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Easy</button>

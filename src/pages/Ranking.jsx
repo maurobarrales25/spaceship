@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useSpring, animated } from '@react-spring/web';
+
 
 const Ranking = () => {
     const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
 
     const handleGoBack = () => {
-        navigate("/");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/");
+        }, 1000); 
     };
 
     return (
@@ -39,6 +50,26 @@ const Ranking = () => {
             >
                 Return Home
             </button>
+            
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
+
 
             <div style={{ 
                 backgroundColor: "rgba(0, 0, 0, 0.7)", 
