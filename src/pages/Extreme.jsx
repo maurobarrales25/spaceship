@@ -2,11 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
-import { GameContext } from '../context/contextGame';
 
 const Extreme = () => {
     const navigate= useNavigate();
-    const [leds, setLeds] = useState(
+    const [screens, setScreens] = useState(
         Array.from({ length: 6 }, (_, index) => ({
             id: index + 1,
             active: false,
@@ -14,19 +13,22 @@ const Extreme = () => {
     );
 
     const [gameStarted, setGameStarted] = useState(false);
-    const [timer, setTimer] = useState(5); 
+    const [timer, setTimer] = useState(5);
     const [sequenceLength, setSequenceLength] = useState(3);
-    const [activeLeds, setActiveLeds] = useState([]); 
-    const [selectedLeds, setSelectedLeds] = useState([]);
+    const [activeScreens, setActiveScreens] = useState([]);
+    const [selectedScreens, setSelectedScreens] = useState([]);
+    const [startTime, setStartTime] = useState(null);
     //const [score, setScore] = useState(0);
+
 
     const StartGame = () => {
         setGameStarted(true);
         setTimer(5);
         setSequenceLength(3);
-        setSelectedLeds([]);
-        activateRandomLeds(3);
+        setSelectedScreens([]);
+        activateRandomScreens(3);
     };
+
 
     useEffect(() => {
         let interval;
@@ -34,55 +36,54 @@ const Extreme = () => {
             interval= setInterval(() =>{
                 setTimer((prevTimer) => prevTimer-1);
             },1000);
-        } else if(timer ==0){
+        } else if(timer === 0){
             setGameStarted(false);
-            setActiveLeds([]);
+            setActiveScreens([]);
         }
         return () => clearInterval(interval);
     }, [gameStarted,timer]);
 
-    const activateRandomLeds= (length) => {
-        const randomLeds= [];
-        while(randomLeds.length < length){
-            const randomIndex= Math.floor(Math.random() * leds.length);
-            if (!randomLeds.includes(randomIndex)) {
-                randomLeds.push(randomIndex);
+
+    const activateRandomScreens= (length) => {
+        const randomScreens= [];
+        while(randomScreens.length < length){
+            const randomIndex= Math.floor(Math.random() * screens.length);
+            if (!randomScreens.includes(randomIndex)) {
+                randomScreens.push(randomIndex);
         }
     }
-    const newLeds = leds.map((led, index) => ({
-        ...led,
-        active: randomLeds.includes(index),
+    const newScreens = screens.map((screen, index) => ({
+        ...screens,
+        active: randomScreens.includes(index),
+        //color:??
     }));
-    setLeds(newLeds); // re renderizo el nuevo estado de los leds.
-    setActiveLeds(randomLeds); // guardo leds activos.
+    setScreens(newScreens); // re renderizo el nuevo estado de los leds.
+    setActiveScreens(randomScreens); // guardo leds activos.
     setStartTime(Date.now()); // reinicio tiempo
+    };
 
-    const handleClick= (id) => {
-        if(!gameStarted) return;
 
-        const clickedLed= leds.find((led) => led.id === id);
+    const handleClick = (id) => {
+        if (!gameStarted) return;
 
-        if (clickedLed.Active && !selectedLeds.includes(id)) {
-            setSelectedLeds([...selectedLeds,id]);
+        const clickedScreen = screens.find((screen) => screen.id === id);
+
+        if (clickedScreen.active && !selectedScreens.includes(id)) {
+            setSelectedScreens([...selectedScreens, id]);
+
+            if (selectedScreens.length + 1 === sequenceLength) {
+                const newLength = sequenceLength + 1;
+                const newTime = timer + 2;
+
+                setTimeout(() => {
+                    setSequenceLength(newLength);
+                    setTimer(newTime);
+                    setSelectedScreens([]);
+                    activateRandomScreens(newLength);
+                }, 500);
+            }
         }
-    }
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
+    };
 
 
     return (
@@ -119,12 +120,19 @@ const Extreme = () => {
                 onClick={() => navigate('/')}
             >
                 Return Home
-            </button>
-        </div>
-    )
-    }
+        </button>
+        
+        <Mesh
+                screens={screens}
+                onScreenClick={handleClick}
+                mode="extreme"
+                isClickable={true}
+        />
+     
+
+    </div>
+    );
+    };
 
 
-
-
-    export default Extreme;
+export default Extreme;

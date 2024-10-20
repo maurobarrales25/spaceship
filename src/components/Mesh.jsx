@@ -17,7 +17,7 @@ const CombinedMesh = ({ screens, onScreenClick, mode, isClickable, options }) =>
             />
         );
     };
-
+                                    
     return (
         <div
             style={{
