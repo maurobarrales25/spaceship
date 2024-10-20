@@ -113,7 +113,10 @@ const GameDesc = () => {
                     </div>
                     <div style={{ width: '30%' }}>
                         <h3 style={{textDecoration:"underline"}}>Extreme:</h3>
-                        <p></p>
+                        <p>In this game mode, players must accurately follow a displayed sequence by clicking 
+                            on circular targets in the correct order. After the sequence is shown, a timer starts, 
+                            giving the player exactly 3 seconds to press the targets in the correct sequence before 
+                            time runs out.</p>
                     </div>
                 </div>
             </div>
