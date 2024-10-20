@@ -12,6 +12,7 @@ import Musical from "./pages/Musical";
 import './App.css';
 import GameProvider from "./context/contextGame";
 import { useAuth0 } from "@auth0/auth0-react";
+import Extreme from "./pages/Extreme";
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/gamedesc" element={<GameDesc />} />
+          <Route path="/extreme" element= {<Extreme />} />
         </Routes>
       </Router>
     </GameProvider>

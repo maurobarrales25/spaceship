@@ -34,6 +34,10 @@ const Home = () => {
         navigate("/GameDesc");
     };
 
+    const handleStartExtremeGame = () => {
+        navigate("/extreme")
+    }
+
     return (
         <div style={{ 
             display: "flex", 
@@ -214,6 +218,22 @@ const Home = () => {
 
 
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
+
+                <button
+                    onClick={handleStartExtremeGame}
+                    style={{
+                        padding: "10px 20px",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        backgroundColor: "red",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",    
+                    }}
+                >
+                    Play Extreme Mode
+                </button>
+                    
                 <button
                     onClick={goToRanking}
                     style={{
