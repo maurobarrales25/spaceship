@@ -13,14 +13,14 @@ const Memory = () => {
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
-        config: { duration: 2000 }
+        config: { duration: 1000 }
     });
 
     const handleGoBack = () => {
         setIsAnimating(true);
         setTimeout(() => {
             navigate("/");
-        }, 2000); 
+        }, 1000); 
     };
 
     const { game } = useContext(GameContext);
