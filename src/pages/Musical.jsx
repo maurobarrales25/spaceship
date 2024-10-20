@@ -215,15 +215,19 @@ const Musical = () => {
                 Return Home
             </button>
 
-            <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+            <div style={{display: "flex", alignItems: "center", gap: "10px", marginTop:"20px"}}>
                 <label style={{ fontSize: "18px", color: "white" }}>Select Difficulty:</label>
                 <select 
                     value={difficulty} 
                     onChange={(e) => setDifficulty(e.target.value)} 
                     style={{
-                        padding: "10px",
-                        fontSize: "16px"
-                    }}>
+                        backgroundColor: "rgba(151, 191, 209, 0.6)",
+                        color: "white",
+                        fontFamily: "sans-serif",
+                        fontWeight: "550",
+                        border: "0",
+                        borderRadius: "20px" 
+                        }}>
                     <option value="easy">Easy (1.2 seconds)</option>
                     <option value="normal">Normal (0.8 seconds)</option>
                     <option value="hard">Hard (0.5 seconds)</option>
@@ -232,10 +236,8 @@ const Musical = () => {
 
             <audio ref={audioRef} loop />
 
-            <Header 
-                title="Musical Game" 
-                onStart={startGame} 
-            />
+            <Header title="Musical Game" onStart={startGame} mode="musical" />
+
             <p>{message}</p>
 
             <Mesh screens={screens} onScreenClick={handleScreenClick} mode="musical" isClickable={isPlaying} />
