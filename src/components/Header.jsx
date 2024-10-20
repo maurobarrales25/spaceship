@@ -54,7 +54,7 @@ const Header = ({ title, onStart, mode }) => {
             <p>{title} Playability: Click as fast as you can to test your reflexes!!</p> 
             <button style={buttonStyle} onClick={onStart}>Start Game!</button>
 
-            {mode !== "musical" && (
+            {mode !== "musical" || "extreme" && (
                 <div>
                     <label>Select Difficulty: </label>
                     <select onChange={handleDifficultyChange}

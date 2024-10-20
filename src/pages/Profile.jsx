@@ -98,19 +98,23 @@ const Profile = () => {
                 <h1>Perfil de {user.name}</h1>
                 <p style={{fontWeight:"600", fontStyle:"italic"}}>Records and Games Played:</p>
                 <ul style={{ listStyleType: "none", padding: 0 }}>
-                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Reflex</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Reflex:</li>
                     <li>Best Time:</li>
                     <li>Games Played:</li>
                     <hr />
-                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Memory</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Memory:</li>
                     <li>Best Score:</li>
                     <li>Games Played:</li>
                     <hr />
-                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Learning</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Learning:</li>
                     <li>Best Score:</li>
                     <li>Games Played:</li>
                     <hr />
-                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Musical</li>
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Musical:</li>
+                    <li>Best Score:</li>
+                    <li>Games Played:</li>
+                    <hr />
+                    <li style={{fontWeight:"500", textDecoration:"underline"}}>Extreme:</li>
                     <li>Best Score:</li>
                     <li>Games Played:</li>
                 </ul>

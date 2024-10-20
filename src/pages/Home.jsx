@@ -94,25 +94,6 @@ const Home = () => {
         }}>
             {/* Hacer el nombre del usuario un botón que redirige a Profile */}
             {isAuthenticated && (
-                // <button
-                //     style={{
-                //         position: "absolute", 
-                //         top: "10px", 
-                //         left: "10px", 
-                //         padding: "10px 20px",
-                //         fontSize: "18px",
-                //         cursor: "pointer",
-                //         backgroundColor: "#7cd6bb",
-                //         color: "white",
-                //         border: "none",
-                //         borderRadius: "5px",
-                //         borderBottom: "3px solid #5a8c7d",
-                //         borderLeft: "3px solid #5a8c7d",
-                //     }}
-                //     onClick={goToProfile}
-                // >
-                //     {user.name}
-                // </button>
                 <div> 
                     <button className="btn btn-primary" onClick={goToProfile}
                         style={{
@@ -178,12 +159,12 @@ const Home = () => {
             </button>
 
             <div>
-                <img src="./Photos/image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain"}}/>
+                <img src="./Photos/image.png" alt="" style={{borderRadius: "20px", width: "7rem", objectFit: "contain " }}/>
             </div>
             <h1 style={{ color: "white", margin: "0"}}>Welcome to Gaming Beyond Earth!</h1>
             <p style={{ color: "white", fontWeight: "450"}}>Pick your Game Mode</p>
 
-            <div style={{display:"flex", justifyContent:"space-evenly", marginBottom:"20px"}}>
+            <div style={{display:"flex", justifyContent:"space-evenly", marginBottom:"20px", marginRight: "500px", marginLeft: "500px"}}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
                     <button
                         onClick={handleStartReflexGame}
@@ -218,7 +199,25 @@ const Home = () => {
                     >
                         Play Memory Mode
                     </button>
-                    </div>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "18px", marginTop: "40px"}}>
+                    <button
+                        onClick={handleStartExtremeGame}
+                        style={{
+                            padding: "10px 20px",
+                            fontSize: "18px",
+                            cursor: "pointer",
+                            backgroundColor: "#7cd6bb",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "5px",
+                            borderBottom: "3px solid #5a8c7d",
+                            borderLeft: "3px solid #5a8c7d"  
+                        }}
+                    >
+                        Play Extreme Mode
+                    </button>
+                </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
                     <button
                         onClick={handleStartLearningGame}
@@ -278,22 +277,7 @@ const Home = () => {
 
 
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "18px", marginTop: "40px"}}>
-
-                <button
-                    onClick={handleStartExtremeGame}
-                    style={{
-                        padding: "10px 20px",
-                        fontSize: "18px",
-                        cursor: "pointer",
-                        backgroundColor: "red",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "5px",    
-                    }}
-                >
-                    Play Extreme Mode
-                </button>
-                    
+  
                 <button
                     onClick={goToRanking}
                     style={{

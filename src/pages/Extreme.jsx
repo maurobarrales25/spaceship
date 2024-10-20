@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
+import Header from '../components/Header';
 import { useSpring, animated } from '@react-spring/web';
 
 const Extreme = () => {
@@ -191,7 +192,7 @@ const Extreme = () => {
             height: "100vh", 
             color: "white", 
         }}>
-            <h1> Extreme Mode</h1>
+            {/* <h1> Extreme Mode</h1> */}
             <button 
                 style={{
                     position: 'absolute',
@@ -230,25 +231,11 @@ const Extreme = () => {
                     Loading...
                 </animated.div>
             )}
-
-            <button 
-                style={{
-                    padding: '10px 20px',
-                    fontSize: '16px',
-                    backgroundColor: 'red',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    marginBottom: '20px',
-                    fontFamily: 'inherit',
-                    fontWeight: 'bold',
-                }}
-                onClick={startGame}>
-                Start Game!
-            </button>
+            
+            <Header title="Extreme Game" onStart={startGame} mode="extreme" />
             <p>{message}</p>
             <p style={{ fontSize: '24px' }}>Time Remaining: {currentTime}s</p>
+
             <Mesh screens={screens} onScreenClick={handleScreenClick} mode="extreme" isClickable={isPlaying} />
             <p>Score: {score}</p>
         </div>
