@@ -2,9 +2,25 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import preguntasRespuestas from '../Data/questions'; 
+import { sendScore } from '../services/dataService';
+import { useSpring, animated } from '@react-spring/web';
 
 const Learning = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
+
+    const handleGoBack = () => {
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/");
+        }, 1000); 
+    };
+
     const [screens, setScreens] = useState([
         { id: 1, active: false, color: "grey" },
         { id: 2, active: false, color: "grey" },
@@ -18,31 +34,65 @@ const Learning = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [feedbackMessage, setFeedbackMessage] = useState('');
     const [difficulty, setDifficulty] = useState('easy'); 
-    const [score, setScore] = useState(0); // Estado para manejar el puntaje
+    const [score, setScore] = useState(0);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const preguntas = preguntasRespuestas[difficulty];
 
+    const submitScore = () => {
+        sendScore(score)
+            .then(response => {
+                console.log('Score sent successfully:', response);
+            })
+            .catch(error => {
+                console.error('Error sending score:', error);
+            });
+    };
+
+    const resetGame = () => {
+        submitScore();
+        setCurrentQuestion(0);
+        setSelectedOption(null);
+        setFeedbackMessage('');
+        setScore(0);
+        setScreens(screens.map(screen => ({ ...screen, color: "grey" })));
+    };
+
     const handleOptionClick = (id) => {
+        if (isDisabled) {
+            return;
+        }
+    
+        setIsDisabled(true);
+    
         if (currentQuestion < preguntas.length) {
             const correctOptionId = preguntas[currentQuestion].correctOptionId;
             setSelectedOption(id);
-
+    
             setScreens(screens.map(screen => ({ ...screen, color: "grey" })));
-
+    
             if (id === correctOptionId) {
                 setFeedbackMessage('¡Correct!');
                 updateScreenColor(id, "green");
-                setScore(prevScore => prevScore + 1); // Aumentar el puntaje si es correcto
+                setScore(prevScore => prevScore + 1);
             } else {
-                setFeedbackMessage('Incorrect, try again.');
+                setFeedbackMessage('Incorrect, the correct answer will be highlighted.');
                 updateScreenColor(id, "red");
+    
+                setTimeout(() => {
+                    updateScreenColor(correctOptionId, "grey");
+                }, 800);
             }
-
+    
             setTimeout(() => {
                 nextQuestion();
-            }, 1000);
+                setIsDisabled(false);
+            }, 2500);
         }
     };
+    
+    
+    
 
     const updateScreenColor = (id, color) => {
         setScreens(prevScreens =>
@@ -55,22 +105,29 @@ const Learning = () => {
     };
 
     const nextQuestion = () => {
-        if (currentQuestion + 1 < preguntas.length) {
-            setCurrentQuestion(prev => prev + 1);
+        if (currentQuestion + 1< preguntas.length) {
+            setCurrentQuestion(currentQuestion + 1);
+            setSelectedOption(null);
+            setFeedbackMessage('');
         } else {
-            setCurrentQuestion(0);
+            setFeedbackMessage('Game Over');
+            submitScore();
+            setTimeout(() => {
+                resetGame();
+                setIsDisabled(false);
+            }, 1000);
         }
-        setFeedbackMessage('');
-        setSelectedOption(null);
-
         setScreens(screens.map(screen => ({ ...screen, active: false, color: "grey" })));
+        
     };
 
     const changeDifficulty = (level) => {
+        
+        submitScore();
         setDifficulty(level);
         setCurrentQuestion(0);
         setFeedbackMessage('');
-        setScore(0); // Reiniciar el puntaje al cambiar la dificultad
+        setScore(0);
         setScreens(screens.map(screen => ({ ...screen, active: false, color: "grey" })));
     };
 
@@ -119,18 +176,39 @@ const Learning = () => {
                     borderBottom: "3px solid #6b6b6b",
                     borderLeft: "3px solid #6b6b6b"
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => handleGoBack()}
             >
                 Return Home
             </button>
+            
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
 
             <h4 style={{fontWeight: "100"}}>Select Difficulty:</h4>
             <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Easy</button>
             <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medium</button>
             <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Hard</button>
 
-            <h2 style={{ marginTop: "2rem", marginBottom:"0", fontStyle: 'italic'}}>Question:</h2>
+            <h2 style={{ marginTop: "1rem", marginBottom:"0", fontStyle: 'italic'}}>Question:</h2>
             <h1>{preguntas[currentQuestion].question}</h1>
+            
+            <p style={{ marginTop: "0rem", marginBottom: "0", fontSize: "0.9rem", fontWeight: "400"}}>If you get it wrong, the correct one will show itself.</p> 
 
             <Mesh 
                 screens={screens} 

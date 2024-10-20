@@ -1,37 +1,74 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSpring, animated } from '@react-spring/web'
 
 const Home = () => {
-    const navigate = useNavigate();
     const { user, isAuthenticated, logout } = useAuth0(); // Obtener la información del usuario
 
-    const handleStartReflexGame = () => {
-        navigate("/reflex"); 
+    const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [animationMessage, setAnimationMessage] = useState("");
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 } 
+    });
+
+   const handleStartReflexGame = () => {
+        setAnimationMessage("Starting Reflex Game...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/reflex");
+        }, 1000); 
     };
 
     const handleStartMemoryGame = () => {
-        navigate("/memory"); 
+        setAnimationMessage("Starting Memory Game...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/memory");
+        }, 1000); 
     };
 
     const handleStartLearningGame = () => {
-        navigate("/Learning"); 
+        setAnimationMessage("Starting Learning Game...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/Learning");
+        }, 1000); 
     };
 
     const handleStartMusicalGame = () => {
-        navigate("/Musical"); 
+        setAnimationMessage("Starting Musical Game...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/Musical");
+        }, 1000); 
     };
 
     const goToProfile = () => {
-        navigate("/profile");
+        setAnimationMessage("Loading profile...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/profile");
+        }, 1000); 
     };
 
     const goToRanking = () => {
-        navigate("/Ranking");
+        setAnimationMessage("Loading ranking...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/Ranking");
+        }, 1000); 
     };
 
     const goToGameDesc = () => {
-        navigate("/GameDesc");
+        setAnimationMessage("Loading ranking...");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/GameDesc");
+        }, 1000); 
     };
 
     const handleStartExtremeGame = () => {
@@ -213,6 +250,25 @@ const Home = () => {
                         Play Musical Mode
                     </button>
                 </div>
+                {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Menos transparencia
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    zIndex: 10, // Asegúrate de que el overlay esté en el nivel superior
+                    ...animationProps
+                }}>
+                    {animationMessage}
+                </animated.div>
+            )}
             </div>
             
 

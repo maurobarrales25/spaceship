@@ -3,9 +3,26 @@ import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
 import { useNavigate } from 'react-router-dom';
+import { sendScore } from '../services/dataService';
+import { useSpring, animated } from '@react-spring/web'
 
 const Musical = () => {
+
     const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
+
+    const handleGoBack = () => {
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/");
+        }, 1000); 
+    };
+
     const { game } = useContext(GameContext);
     const [screens, setScreens] = useState([
         { id: 1, active: false },
@@ -44,6 +61,13 @@ const Musical = () => {
     };
 
     const resetGame = () => {
+        sendScore(score)
+            .then(response => {
+                console.log('Score sent successfully:', response);
+            })
+            .catch(error => {
+                console.error('Error sending score:', error);
+            });
         setSequence([]);
         setUserSequence([]);
         setCurrentIndex(0);
@@ -202,20 +226,44 @@ const Musical = () => {
                     borderBottom: "3px solid #6b6b6b",
                     borderLeft: "3px solid #6b6b6b"
                 }}
-                onClick={() => navigate('/')}
+                onClick={() =>handleGoBack()}
             >
                 Return Home
             </button>
 
-            <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    zIndex: 10, // para asegurarse de que el overlay este en el nivel superior
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
+
+            <div style={{display: "flex", alignItems: "center", gap: "10px", marginTop:"20px"}}>
                 <label style={{ fontSize: "18px", color: "white" }}>Select Difficulty:</label>
                 <select 
                     value={difficulty} 
                     onChange={(e) => setDifficulty(e.target.value)} 
                     style={{
-                        padding: "10px",
-                        fontSize: "16px"
-                    }}>
+                        backgroundColor: "rgba(151, 191, 209, 0.6)",
+                        color: "white",
+                        fontFamily: "sans-serif",
+                        fontWeight: "550",
+                        border: "0",
+                        borderRadius: "20px" 
+                        }}>
                     <option value="easy">Easy (1.2 seconds)</option>
                     <option value="normal">Normal (0.8 seconds)</option>
                     <option value="hard">Hard (0.5 seconds)</option>
@@ -224,10 +272,8 @@ const Musical = () => {
 
             <audio ref={audioRef} loop />
 
-            <Header 
-                title="Musical Game" 
-                onStart={startGame} 
-            />
+            <Header title="Musical Game" onStart={startGame} mode="musical" />
+
             <p>{message}</p>
 
             <Mesh screens={screens} onScreenClick={handleScreenClick} mode="musical" isClickable={isPlaying} />

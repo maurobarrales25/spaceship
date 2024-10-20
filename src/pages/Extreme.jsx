@@ -20,7 +20,7 @@ const Extreme = () => {
     const [score, setScore] = useState(0);
 
     const LED_DURATION = 700;
-    const timeLimit = 5;
+    const timeLimit = 3;
     const [currentTime, setCurrentTime] = useState(timeLimit);
     const [timer, setTimer] = useState(null);
 
@@ -29,6 +29,7 @@ const Extreme = () => {
             checkSequence();
         }
 
+        // Limpiar el temporizador cuando el juego se detiene
         if (!isPlaying && timer) {
             clearInterval(timer);
             setTimer(null);
@@ -37,7 +38,7 @@ const Extreme = () => {
 
     const startGame = () => {
         setMessage('Survive!');
-        const newSequence = generateRandomSequence(5);
+        const newSequence = generateRandomSequence(2); // Comenzar con 2 LEDs
         setSequence(newSequence);
         setUserSequence([]);
         setScore(0);
@@ -50,7 +51,7 @@ const Extreme = () => {
         const newSequence = [];
         const chosenIds = new Set();
 
-        while (newSequence.length < length) {
+        while (newSequence.length < Math.min(length, 6)) {
             const randomId = Math.floor(Math.random() * screens.length) + 1;
             if (!chosenIds.has(randomId)) {
                 newSequence.push(randomId);
@@ -80,24 +81,23 @@ const Extreme = () => {
 
     const startTimer = () => {
         if (timer) clearInterval(timer);
-
         setCurrentTime(timeLimit);
 
         const newTimer = setInterval(() => {
             setCurrentTime((prevTime) => {
-                if (prevTime <= 1) {
+                if (prevTime > 0) {
+                    return prevTime - 1;
+                } else {
                     clearInterval(newTimer);
-                    setMessage('Time is up'); 
+                    setMessage('Time is up');
                     setScreens((prevScreens) =>
                         prevScreens.map((screen) => ({ ...screen, active: false }))
                     );
-                    setIsPlaying(false);
+                    setIsPlaying(false); // Detener el juego
                     return 0;
                 }
-                return prevTime - 1;
             });
         }, 1000);
-
         setTimer(newTimer);
     };
 
@@ -118,58 +118,56 @@ const Extreme = () => {
     };
 
     const handleScreenClick = (id) => {
-        if (isPlaying) {
-            const updatedUserSequence = [...userSequence, id];
-            setUserSequence(updatedUserSequence);
-            activateScreen(id);
+        if (!isPlaying) return; 
 
-            const currentIndex = updatedUserSequence.length - 1;
-            if (sequence[currentIndex] !== id) {
-                setMessage('Incorrect. Press "Start Game!" to retry.');
-                setScreens((prevScreens) =>
-                    prevScreens.map((screen) => ({ ...screen, active: false }))
-                );
-                setIsPlaying(false);
-                return;
-            }
+        const updatedUserSequence = [...userSequence, id];
+        setUserSequence(updatedUserSequence);
+        activateScreen(id);
 
-            setTimeout(() => {
-                deactivateScreen(id);
-            }, 500);
-        }
-    };
-
-    const checkSequence = () => {
-        let isCorrect = true;
-        if (userSequence.length !== sequence.length) {
-            isCorrect = false; 
-        } else {
-            for (let i = 0; i < sequence.length; i++) {
-                if (sequence[i] !== userSequence[i]) {
-                    isCorrect = false; 
-                    break;
-                }
-            }
-        }
-
-        if (isCorrect) {
-            setMessage('Correct!');
-            setScore(score + 1);
-            setTimeout(() => {
-                const newLength = sequence.length + 1;
-                const newSequence = generateRandomSequence(newLength);
-                setSequence(newSequence);
-                setUserSequence([]);
-                setIsPlaying(false);
-                playSequence(newSequence);
-            }, 1000);
-        } else {
-            setMessage('Incorrect!');
+        const currentIndex = updatedUserSequence.length - 1;
+        if (sequence[currentIndex] !== id) {
+            setMessage('Incorrect');
             setScreens((prevScreens) =>
                 prevScreens.map((screen) => ({ ...screen, active: false }))
             );
-            setIsPlaying(false);
+            resetGame();
+            return;
         }
+
+        setTimeout(() => {
+            deactivateScreen(id);
+        }, 500);
+    };
+
+    const checkSequence = () => {
+        if (!isPlaying) return; 
+
+        for (let i = 0; i < sequence.length; i++) {
+            if (sequence[i] !== userSequence[i]) {
+                setMessage('Incorrect!');
+                resetGame();
+                return;
+            }
+        }
+
+        setMessage('Correct!');
+        setScore(score + 1);
+        setTimeout(() => {
+            const newLength = Math.min(sequence.length + 1, 6); 
+            const newSequence = generateRandomSequence(newLength);
+            setSequence(newSequence);
+            setUserSequence([]);
+            setIsPlaying(false);
+            playSequence(newSequence);
+        }, 1000);
+    };
+
+    const resetGame = () => {
+        setScreens((prevScreens) =>
+            prevScreens.map((screen) => ({ ...screen, active: false }))
+        );
+        setUserSequence([]);
+        setIsPlaying(false);
     };
 
     return (
@@ -225,7 +223,6 @@ const Extreme = () => {
             <p style={{ fontSize: '24px' }}>Time Remaining: {currentTime}s</p>
             <Mesh screens={screens} onScreenClick={handleScreenClick} mode="extreme" isClickable={isPlaying} />
             <p>Score: {score}</p>
-            
         </div>
     );
 };

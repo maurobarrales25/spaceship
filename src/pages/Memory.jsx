@@ -3,9 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import Mesh from '../components/Mesh';
 import Header from '../components/Header';
 import { GameContext } from '../context/contextGame';
+import { sendScore } from '../services/dataService';
+import { useSpring, animated } from '@react-spring/web';
 
 const Memory = () => {
+
     const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
+
+    const handleGoBack = () => {
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/");
+        }, 1000); 
+    };
+
     const { game } = useContext(GameContext);
     const [screens, setScreens] = useState([
         { id: 1, active: false },
@@ -114,10 +131,19 @@ const Memory = () => {
             }, 1000);
         } else {
             setMessage('Incorrect. Press "Start Game!" to try again');
+
             setScreens((prevScreens) =>
                 prevScreens.map((screen) => ({ ...screen, active: false }))
             );
             setIsPlaying(false);
+
+            sendScore(score)
+                .then(response => {
+                    console.log('Score sent successfully:', response);
+                })
+                .catch(error => {
+                    console.error('Error sending score:', error);
+                });
         }
     };
 
@@ -151,10 +177,30 @@ const Memory = () => {
                     borderBottom: "3px solid #6b6b6b",
                     borderLeft: "3px solid #6b6b6b"
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => handleGoBack()}
             >
                 Return Home
             </button>
+
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    zIndex: 10, // para asegurarse de que el overlay este en el nivel superior
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
 
             <Header 
                 title="Memory Game" 

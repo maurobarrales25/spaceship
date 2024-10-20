@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSpring, animated } from '@react-spring/web';
 
 const Profile = () => {
     const { user } = useAuth0();
+    
     const navigate = useNavigate();
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const animationProps = useSpring({
+        opacity: isAnimating ? 1 : 0,
+        config: { duration: 1000 }
+    });
 
     const handleGoBack = () => {
-        navigate("/");
+        setIsAnimating(true);
+        setTimeout(() => {
+            navigate("/");
+        }, 1000); 
     };
+
 
     return (
         <div style={{ 
@@ -41,6 +53,25 @@ const Profile = () => {
             >
                 Return Home
             </button>
+
+            {isAnimating && (
+                <animated.div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontSize: '24px',
+                    ...animationProps
+                }}>
+                    Loading...
+                </animated.div>
+            )}
 
             <div style={{ 
                 backgroundColor: "rgba(0, 0, 0, 0.7)", 
