@@ -13,14 +13,14 @@ const Memory = () => {
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
-        config: { duration: 1000 }
+        config: { duration: 2000 }
     });
 
     const handleGoBack = () => {
         setIsAnimating(true);
         setTimeout(() => {
             navigate("/");
-        }, 1000); 
+        }, 2000); 
     };
 
     const { game } = useContext(GameContext);
@@ -189,12 +189,13 @@ const Memory = () => {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     color: 'white',
                     fontSize: '24px',
+                    zIndex: 10, // para asegurarse de que el overlay este en el nivel superior
                     ...animationProps
                 }}>
                     Loading...

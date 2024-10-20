@@ -11,14 +11,14 @@ const Learning = () => {
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
-        config: { duration: 1000 }
+        config: { duration: 2000 }
     });
 
     const handleGoBack = () => {
         setIsAnimating(true);
         setTimeout(() => {
             navigate("/");
-        }, 1000); 
+        }, 2000); 
     };
 
     const [screens, setScreens] = useState([
@@ -188,7 +188,7 @@ const Learning = () => {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
