@@ -12,6 +12,8 @@ const Learning = () => {
     console.log("USERNAME learning: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
+    const title = "Learning Mode";
+    const description = "Press the right answers.";
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
@@ -94,9 +96,6 @@ const Learning = () => {
         }
     };
     
-    
-    
-
     const updateScreenColor = (id, color) => {
         setScreens(prevScreens =>
             prevScreens.map(screen => ({
@@ -207,6 +206,8 @@ const Learning = () => {
             <button onClick={() => changeDifficulty('easy')} style={getButtonStyle('easy')}>Easy</button>
             <button onClick={() => changeDifficulty('medium')} style={getButtonStyle('medium')}>Medium</button>
             <button onClick={() => changeDifficulty('hard')} style={getButtonStyle('hard')}>Hard</button>
+
+            <p>{title} Playability: {description}</p>
 
             <h2 style={{ marginTop: "1rem", marginBottom:"0", fontStyle: 'italic'}}>Question:</h2>
             <h1>{preguntas[currentQuestion].question}</h1>

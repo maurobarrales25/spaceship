@@ -13,6 +13,8 @@ const Reflex = () => {
     console.log("USERNAME reflex: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
+    const title = "Reflex Mode";
+    const description = "Click as fast as you can to test your reflexes!!";
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
@@ -180,6 +182,7 @@ const Reflex = () => {
                     />
                 {gameStarted && <h2>Time: {timer}s</h2>}
             </div>
+            <p>{title} Playability: {description}</p>
         
             <Mesh screens={screens} onScreenClick={handleScreenClick} mode="reflex"/>
 
