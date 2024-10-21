@@ -12,6 +12,8 @@ const Memory = () => {
     console.log("USERNAME Memory: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
+    const title = "Memory Mode";
+    const description = "Remember and repeat sequences under pressure.";
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
@@ -211,6 +213,7 @@ const Memory = () => {
                 title="Memory Game" 
                 onStart={startGame} 
             />
+            <p>{title} Playability: {description}</p>
             <p>{message}</p>
             
             <Mesh screens={screens} onScreenClick={handleScreenClick} mode="memory" isClickable={isPlaying} />

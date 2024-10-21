@@ -7,6 +7,8 @@ import { useSpring, animated } from '@react-spring/web';
 const Extreme = () => {
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
+    const title = "Extreme Mode";
+    const description = "Speed and precision are key to success. React fast to every challenge!";
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
@@ -231,8 +233,9 @@ const Extreme = () => {
                     Loading...
                 </animated.div>
             )}
-            
+
             <Header title="Extreme Game" onStart={startGame} mode="extreme" />
+            <p>{title} Playability: {description}</p>
             <p>{message}</p>
             <p style={{ fontSize: '24px' }}>Time Remaining: {currentTime}s</p>
 

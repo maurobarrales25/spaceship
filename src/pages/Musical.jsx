@@ -14,6 +14,9 @@ const Musical = () => {
     console.log("USERNAME musical: ",username);
     const navigate = useNavigate();
     const [isAnimating, setIsAnimating] = useState(false);
+    const title = "Musical Mode";
+    const description = "Follow the rhythm while pressing the right buttons in time.";
+
 
     const animationProps = useSpring({
         opacity: isAnimating ? 1 : 0,
@@ -281,6 +284,7 @@ const Musical = () => {
             <audio ref={audioRef} loop />
 
             <Header title="Musical Game" onStart={startGame} mode="musical" />
+            <p>{title} Playability: {description}</p>
 
             <p>{message}</p>
 
